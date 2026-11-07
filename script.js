@@ -104,6 +104,33 @@ var L10N = {
       "Take a 5-minute break: water, stretch, breathe. Your brain solves problems even while you rest!",
       "Write down exactly what you do not understand, and bring that precise question to your teacher. This is what excellent students do."
     ],
+    youngSteps: {
+      numbers: [
+        "Let us read the exercise together, one line at a time. Tell me: what must we find?",
+        "Now count what you know. You can use your fingers, or draw little circles!",
+        "Write your try here, or take a photo of your paper!",
+        "Look at your answer. Is it possible? Count it again slowly!"
+      ],
+      words: [
+        "Let us read together, one line at a time. Put your finger under the words!",
+        "Read a little bit out loud. Which word is hard?",
+        "Write your answer here, or take a photo of your paper!",
+        "Read it again out loud. Does it sound good?"
+      ]
+    },
+    youngHints: {
+      numbers: [
+        "Draw the problem like a little picture: apples, balls, anything you like!",
+        "Count with your fingers, or with small objects like buttons!",
+        "Cut the exercise into very small pieces. Do the easiest piece first!"
+      ],
+      words: [
+        "Use your finger under the line: your eyes will not get lost!",
+        "Draw the story as a little picture to remember it!",
+        "Ask someone to read the hard word with you!"
+      ]
+    },
+
     subjects: {
       maths: {
         steps: [
@@ -274,6 +301,33 @@ var L10N = {
       "Fais une pause de 5 minutes : eau, étirements, respiration. Ton cerveau résout des problèmes même pendant le repos !",
       "Écris exactement ce que tu ne comprends pas, et apporte cette question précise à ton professeur. C'est ce que font les excellents élèves."
     ],
+    youngSteps: {
+      numbers: [
+        "On lit l'exercice ensemble, une ligne à la fois. Dis-moi : que doit-on trouver ?",
+        "Compte ce que tu connais. Tu peux utiliser tes doigts ou dessiner des petits ronds !",
+        "Écris ton essai ici, ou prends une photo de ton papier !",
+        "Regarde ta réponse. C'est possible ? Recompte doucement !"
+      ],
+      words: [
+        "On lit ensemble, une ligne à la fois. Mets ton doigt sous les mots !",
+        "Lis un petit bout à voix haute. Quel mot est difficile ?",
+        "Écris ta réponse ici, ou prends une photo de ton papier !",
+        "Relis à voix haute. Ça sonne bien ?"
+      ]
+    },
+    youngHints: {
+      numbers: [
+        "Dessine le problème comme une petite image : des pommes, des billes, ce que tu veux !",
+        "Compte avec tes doigts, ou avec des petits objets comme des boutons !",
+        "Découpe l'exercice en tout petits morceaux. Fais le plus facile d'abord !"
+      ],
+      words: [
+        "Mets ton doigt sous la ligne : tes yeux ne se perdent plus !",
+        "Dessine l'histoire en petite image pour t'en souvenir !",
+        "Demande à quelqu'un de lire le mot difficile avec toi !"
+      ]
+    },
+
     subjects: {
       maths: {
         steps: [
@@ -444,6 +498,33 @@ var L10N = {
       "Fai una pausa di 5 minuti: acqua, stretching, respiro. Il tuo cervello risolve problemi anche mentre riposi!",
       "Scrivi esattamente cosa non capisci e porta quella domanda precisa al tuo insegnante. &Egrave; quello che fanno gli studenti eccellenti."
     ],
+    youngSteps: {
+      numbers: [
+        "Leggiamo l'esercizio insieme, una riga alla volta. Dimmi: cosa dobbiamo trovare?",
+        "Conta quello che sai. Puoi usare le dita o disegnare dei cerchietti!",
+        "Scrivi il tuo tentativo qui, o fai una foto del tuo foglio!",
+        "Guarda la tua risposta. È possibile? Riconta piano!"
+      ],
+      words: [
+        "Leggiamo insieme, una riga alla volta. Metti il dito sotto le parole!",
+        "Leggi ad alta voce un pezzettino. Quale parola è difficile?",
+        "Scrivi la tua risposta qui, o fai una foto del tuo foglio!",
+        "Rileggi ad alta voce. Suona bene?"
+      ]
+    },
+    youngHints: {
+      numbers: [
+        "Disegna il problema come un disegno: mele, palline, quello che vuoi!",
+        "Conta con le dita o con piccoli oggetti come i bottoni!",
+        "Taglia l'esercizio in pezzetti piccolissimi. Fai prima il più facile!"
+      ],
+      words: [
+        "Metti il dito sotto la riga: i tuoi occhi non si perdono!",
+        "Disegna la storia con una piccola immagine per ricordarla!",
+        "Chiedi a qualcuno di leggere con te la parola difficile!"
+      ]
+    },
+
     subjects: {
       maths: {
         steps: [
@@ -614,6 +695,33 @@ var L10N = {
       "Toma un descanso de 5 minutos: agua, estiramiento, respiraci&oacute;n. Tu cerebro resuelve problemas incluso mientras descansas.",
       "Escribe exactamente qué no entiendes y lleva esa pregunta precisa a tu profesor. Eso hacen los estudiantes excelentes."
     ],
+    youngSteps: {
+      numbers: [
+        "Leamos el ejercicio juntos, una línea a la vez. Dime: ¿qué tenemos que encontrar?",
+        "Cuenta lo que sabes. Puedes usar tus dedos o dibujar circulitos!",
+        "Escribe tu intento aquí, o haz una foto de tu papel!",
+        "Mira tu respuesta. ¿Es posible? Cuenta otra vez despacio!"
+      ],
+      words: [
+        "Leamos juntos, una línea a la vez. Pon tu dedo debajo de las palabras!",
+        "Lee un pedacito en voz alta. ¿Qué palabra es difícil?",
+        "Escribe tu respuesta aquí, o haz una foto de tu papel!",
+        "Relee en voz alta. ¿Suena bien?"
+      ]
+    },
+    youngHints: {
+      numbers: [
+        "Dibuja el problema como un dibujo: manzanas, bolas, lo que quieras!",
+        "Cuenta con tus dedos o con cosas pequeñas como botones!",
+        "Corta el ejercicio en pedacitos. Haz primero el más fácil!"
+      ],
+      words: [
+        "Pon tu dedo debajo de la línea: tus ojos no se pierden!",
+        "Dibuja la historia como una pequeña imagen para recordarla!",
+        "Pide a alguien que lea contigo la palabra difícil!"
+      ]
+    },
+
     subjects: {
       maths: {
         steps: [
@@ -784,6 +892,33 @@ var L10N = {
       "Mach eine 5-Minuten-Pause: Wasser, Stretching, atmen. Dein Gehirn löst Probleme sogar im Ruhen!",
       "Schreib genau auf, was du nicht verstehst, und bring diese präzise Frage zu deiner Lehrerin oder deinem Lehrer. Das machen exzellente Schüler."
     ],
+    youngSteps: {
+      numbers: [
+        "Wir lesen die Aufgabe zusammen, Zeile für Zeile. Sag mir: Was sollen wir herausfinden?",
+        "Zähle, was du schon weißt. Du kannst deine Finger benutzen oder kleine Kreise malen!",
+        "Schreib deinen Versuch hier auf, oder mach ein Foto von deinem Blatt!",
+        "Schau auf deine Antwort. Ist das möglich? Zähl nochmal langsam!"
+      ],
+      words: [
+        "Wir lesen zusammen, Zeile für Zeile. Leg deinen Finger unter die Wörter!",
+        "Lies ein kleines Stück laut vor. Welches Wort ist schwer?",
+        "Schreib deine Antwort hier, oder mach ein Foto von deinem Blatt!",
+        "Lies nochmal laut vor. Klingt das gut?"
+      ]
+    },
+    youngHints: {
+      numbers: [
+        "Mal die Aufgabe wie ein kleines Bild: Äpfel, Bälle, was du magst!",
+        "Zähl mit den Fingern oder mit kleinen Sachen wie Knöpfen!",
+        "Schneide die Aufgabe in ganz kleine Stücke. Mach das leichteste zuerst!"
+      ],
+      words: [
+        "Leg den Finger unter die Zeile: Deine Augen verlieren sich nicht!",
+        "Mal die Geschichte als kleines Bild, damit du sie dir merkst!",
+        "Frag jemanden, das schwere Wort mit dir zu lesen!"
+      ]
+    },
+
     subjects: {
       maths: {
         steps: [
@@ -954,6 +1089,33 @@ var L10N = {
       "休息 5 分钟：喝水、伸展、深呼吸。你的大脑休息时也在想题目！",
       "把你不懂的地方准确地写下来，带着这个问题去问老师。优秀的学生都这样做。"
     ],
+    youngSteps: {
+      numbers: [
+        "我们一起读题目，一次读一行。告诉我：要找什么？",
+        "数一数你知道的。可以用手指，也可以画小圆圈！",
+        "把你的尝试写在这里，或者拍下你的纸！",
+        "看看你的答案。可能吗？再慢慢数一遍！"
+      ],
+      words: [
+        "我们一起读，一次读一行。把手指放在字下面！",
+        "大声读一小段。哪个字难？",
+        "把你的答案写在这里，或者拍下你的纸！",
+        "再大声读一遍。听起来顺吗？"
+      ]
+    },
+    youngHints: {
+      numbers: [
+        "把题目画成小图：苹果、球，什么都可以！",
+        "用手指数，或者用小东西比如纽扣！",
+        "把题目切成很小的小块。先做最简单的！"
+      ],
+      words: [
+        "把手指放在句子下面：眼睛就不会丢行了！",
+        "把故事画成小图，帮助记住！",
+        "请别人和你一起读难字！"
+      ]
+    },
+
     subjects: {
       maths: {
         steps: [
@@ -1068,6 +1230,12 @@ function stepTitle(i) { return STEP_EMOJI[i] + dict().stepTitles[i]; }
 // Get the steps and hints for a subject, in the chosen language.
 function subjectData(key) {
   var d = dict();
+  // Little kids (3-7) get much simpler steps and hints: no abstract strategies.
+  if (ageBand() === "young" && d.youngSteps) {
+    var wordSubjects = ["reading", "english", "italian", "spanish", "french", "german", "chinese"];
+    var family = (wordSubjects.indexOf(key) !== -1) ? "words" : "numbers";
+    return { steps: d.youngSteps[family], hints: d.youngHints[family] };
+  }
   if (d.subjects[key]) {
     return { steps: d.subjects[key].steps, hints: d.subjects[key].hints };
   }
@@ -1185,7 +1353,7 @@ function buildSystemPrompt() {
     "Always reply in " + langNames[chosenLang] + ". " +
     "VOCABULARY BY AGE: " +
     (chosenAge <= 7
-      ? "the student is " + chosenAge + " years old: use only very simple words a small child knows, very short sentences (under 10 words), name concrete everyday objects, ask exactly ONE tiny question at a time, be playful. "
+      ? "the student is " + chosenAge + " years old: use only very simple words a small child knows, very short sentences (under 10 words), name concrete everyday objects, ask exactly ONE tiny question at a time, be playful. When you explain how to work out the question, use tiny concrete steps with objects, fingers and drawings, never abstract strategies like clue words. "
       : chosenAge <= 12
       ? "the student is " + chosenAge + " years old: use simple everyday sentences; if you need a school word, explain it right away with a tiny example. "
       : "the student is a teenager: use precise vocabulary and correct school terminology for the subject, treat them like a serious student, never use baby talk. ") +
