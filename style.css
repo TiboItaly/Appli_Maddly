@@ -182,7 +182,7 @@ textarea {
 
 #celebration { text-align: center; font-size: 1.6rem; margin-top: 15px; }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 footer { text-align: center; color: #777; padding: 20px; }
 
