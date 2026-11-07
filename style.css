@@ -1,8 +1,6 @@
 /* ===== style.css =====
-   This file decides how the app LOOKS.
-   Colors, sizes, round corners... all the beauty lives here. */
+   This file decides how the app LOOKS. */
 
-/* Google-style font stack */
 body {
   font-family: "Comic Sans MS", "Segoe UI", Arial, sans-serif;
   background: linear-gradient(160deg, #ffe9f3, #e9f3ff);
@@ -10,27 +8,13 @@ body {
   color: #333;
 }
 
-header {
-  text-align: center;
-  padding: 30px 10px 10px;
-}
+header { text-align: center; padding: 30px 10px 10px; }
 
-h1 {
-  font-size: 2.4rem;
-  color: #7b2cbf;
-  margin: 0;
-}
+h1 { font-size: 2.4rem; color: #7b2cbf; margin: 0; }
 
-.tagline {
-  color: #555;
-  font-size: 1.1rem;
-}
+.tagline { color: #555; font-size: 1.1rem; }
 
-main {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 20px;
-}
+main { max-width: 700px; margin: 0 auto; padding: 20px; }
 
 section {
   background: white;
@@ -40,12 +24,7 @@ section {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* The subject buttons */
-.subjects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+.subjects { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .subject {
   font-size: 1.05rem;
@@ -57,13 +36,8 @@ section {
   transition: all 0.15s ease;
 }
 
-.subject:hover {
-  background: #7b2cbf;
-  color: white;
-  transform: scale(1.05);
-}
+.subject:hover { background: #7b2cbf; color: white; transform: scale(1.05); }
 
-/* The big buttons */
 .big-btn {
   font-size: 1.1rem;
   padding: 12px 22px;
@@ -75,17 +49,10 @@ section {
   margin-top: 12px;
 }
 
-.big-btn:hover {
-  background: #5a189a;
-}
+.big-btn:hover { background: #5a189a; }
 
-.big-btn.success {
-  background: #2b9348;
-}
-
-.big-btn.success:hover {
-  background: #1f7a35;
-}
+.big-btn.success { background: #2b9348; }
+.big-btn.success:hover { background: #1f7a35; }
 
 textarea {
   width: 100%;
@@ -96,7 +63,29 @@ textarea {
   box-sizing: border-box;
 }
 
-/* One method step (one line of the method) */
+/* NEW: the button that looks like a camera choice */
+.photo-label {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px dashed #7b2cbf;
+  color: #7b2cbf;
+  cursor: pointer;
+}
+
+.photo-label:hover { background: #f6f0ff; }
+
+/* NEW: the picture of the homework */
+#photo-preview, #coach-photo {
+  display: block;
+  max-width: 100%;
+  max-height: 350px;
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 2px solid #7b2cbf;
+}
+
 .method-step {
   background: #f6f0ff;
   border-left: 6px solid #7b2cbf;
@@ -105,11 +94,8 @@ textarea {
   border-radius: 8px;
 }
 
-.method-step strong {
-  color: #5a189a;
-}
+.method-step strong { color: #5a189a; }
 
-/* The hint box */
 #hint-box {
   background: #fff8d6;
   border-left: 6px solid #ffb703;
@@ -118,19 +104,17 @@ textarea {
   border-radius: 8px;
 }
 
-#celebration {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 15px;
+/* NEW: the box with helpful things to do (after 3 hints) */
+#helpful-box {
+  background: #e0f4f7;
+  border-left: 6px solid #219ebc;
+  padding: 12px 15px 12px 35px;
+  margin: 12px 0;
+  border-radius: 8px;
 }
 
-/* A class that hides an element */
-.hidden {
-  display: none;
-}
+#celebration { text-align: center; font-size: 1.6rem; margin-top: 15px; }
 
-footer {
-  text-align: center;
-  color: #777;
-  padding: 20px;
-}
+.hidden { display: none; }
+
+footer { text-align: center; color: #777; padding: 20px; }

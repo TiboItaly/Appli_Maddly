@@ -1,8 +1,7 @@
 // ===== script.js =====
 // This file is the BRAIN of the app.
-// It waits for the user to click, then reacts.
 
-// ---- 1. THE DATA: the coach method for each subject ----
+// ---- 1. THE DATA ----
 var METHODS = {
   maths: [
     { title: "UNDERSTAND", text: "Read the problem twice. What exactly are you asked to find? Which numbers or facts do you have?" },
@@ -36,30 +35,34 @@ var METHODS = {
   ]
 };
 
-// General hints, given one at a time, NEVER the answer.
+// Only 3 hints. After that, the coach changes strategy!
 var HINTS = [
   "Take a deep breath. You learn best when you are calm.",
   "Say the question out loud in your own words. If you cannot explain it, you have not fully understood it yet.",
-  "Look at your class notes or textbook: is there a similar example you can compare with?",
-  "Try to solve just a small piece of the problem. A small success gives you energy for the rest.",
-  "Still stuck? Write down exactly WHAT you do not understand. Then bring that precise question to your teacher: this is what excellent students do."
+  "Look at your class notes or textbook: is there a similar example you can compare with?"
 ];
 
-// ---- 2. THE MEMORY: variables that remember things ----
+// NEW: after the 3 hints, the app suggests helpful ACTIONS instead.
+var HELPFUL_THINGS = [
+  "Try an easier, similar exercise from your book. Solve it, then come back to this one.",
+  "Ask a friend to explain HOW they would start, not the answer.",
+  "Ask a parent to read the question with you: sometimes saying it out loud is enough.",
+  "Work on another part of your homework first, then come back with fresh eyes.",
+  "Take a 5-minute break: water, stretch, breathe. Your brain solves problems even while you rest!",
+  "Write down exactly what you do not understand, and bring that precise question to your teacher. This is what excellent students do."
+];
+
+// ---- 2. THE MEMORY ----
 var chosenSubject = null;
 var hintCount = 0;
 
-// ---- 3. HELPERS: small functions to show and hide sections ----
-function show(id) {
-  document.getElementById(id).classList.remove("hidden");
-}
-function hide(id) {
-  document.getElementById(id).classList.add("hidden");
-}
+// ---- 3. HELPERS ----
+function show(id) { document.getElementById(id).classList.remove("hidden"); }
+function hide(id) { document.getElementById(id).classList.add("hidden"); }
 
-// ---- 4. THE REACTIONS: what happens when the user clicks ----
+// ---- 4. THE REACTIONS ----
 
-// When a subject button is clicked:
+// Choose a subject:
 document.querySelectorAll(".subject").forEach(function (button) {
   button.addEventListener("click", function () {
     chosenSubject = button.dataset.subject;
@@ -68,7 +71,22 @@ document.querySelectorAll(".subject").forEach(function (button) {
   });
 });
 
-// When the student starts coaching:
+// NEW: when the student picks a picture, we read it and show it.
+// FileReader is a tool that reads a file from the phone/computer.
+document.getElementById("photo-input").addEventListener("change", function (event) {
+  var file = event.target.files[0];
+  if (!file) { return; }
+  var reader = new FileReader();
+  reader.onload = function () {
+    var photoData = reader.result;
+    document.getElementById("photo-preview").src = photoData;
+    document.getElementById("coach-photo").src = photoData;
+    show("photo-preview");
+  };
+  reader.readAsDataURL(file);
+});
+
+// Start coaching:
 document.getElementById("start-coach").addEventListener("click", function () {
   var steps = METHODS[chosenSubject];
   var list = document.getElementById("method-steps");
@@ -81,35 +99,63 @@ document.getElementById("start-coach").addEventListener("click", function () {
   });
   var names = { maths: "Maths", english: "English / French", science: "Science", history: "History / Geography", other: "your subject" };
   document.getElementById("subject-reminder").textContent = "Coach mode: " + names[chosenSubject] + ". I believe in you!";
+
+  // Show the photo again next to the method, if the student took one.
+  if (document.getElementById("photo-preview").classList.contains("hidden") === false) {
+    show("coach-photo");
+  }
+
   hintCount = 0;
+  document.getElementById("hint-btn").innerHTML = "&#128161; Give me a hint (3 max)";
   hide("step-question");
   hide("hint-box");
+  hide("helpful-box");
   hide("celebration");
   hide("restart-btn");
   show("step-coach");
 });
 
-// Hint button: reveals hints one by one:
+// Hint button: 3 hints, then helpful things to do.
+// This is a CONDITION: the code chooses between two paths.
 document.getElementById("hint-btn").addEventListener("click", function () {
-  var hint = HINTS[Math.min(hintCount, HINTS.length - 1)];
-  var box = document.getElementById("hint-box");
-  box.innerHTML = "<strong>Hint " + (hintCount + 1) + ":</strong> " + hint;
-  show("hint-box");
-  hintCount = hintCount + 1;
+  if (hintCount < HINTS.length) {
+    // Path 1: we still have hints left.
+    var hint = HINTS[hintCount];
+    var box = document.getElementById("hint-box");
+    box.innerHTML = "<strong>Hint " + (hintCount + 1) + " of 3:</strong> " + hint;
+    show("hint-box");
+    hintCount = hintCount + 1;
+    if (hintCount === HINTS.length) {
+      document.getElementById("hint-btn").innerHTML = "&#129514; More helpful things to do";
+    }
+  } else {
+    // Path 2: no more hints. Time for a new strategy!
+    var helpfulBox = document.getElementById("helpful-box");
+    var listHTML = "<strong>No more hints! Time to change strategy. Here is what great students do:</strong><ul>";
+    HELPFUL_THINGS.forEach(function (thing) {
+      listHTML = listHTML + "<li>" + thing + "</li>";
+    });
+    helpfulBox.innerHTML = listHTML + "</ul>";
+    show("helpful-box");
+  }
 });
 
-// Celebration button:
+// Celebration:
 document.getElementById("done-btn").addEventListener("click", function () {
   var celebration = document.getElementById("celebration");
   celebration.innerHTML = "&#127881; Congratulations! You found the answer YOURSELF. &#127881;<br>That is called learning. See you at the next homework!";
   show("celebration");
   show("restart-btn");
   hide("hint-box");
+  hide("helpful-box");
 });
 
-// Restart button:
+// Restart:
 document.getElementById("restart-btn").addEventListener("click", function () {
   hide("step-coach");
   show("step-subject");
   document.getElementById("question-box").value = "";
+  hide("photo-preview");
+  hide("coach-photo");
+  document.getElementById("photo-input").value = "";
 });

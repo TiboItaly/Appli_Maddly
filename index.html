@@ -25,11 +25,18 @@
       </div>
     </section>
 
-    <!-- STEP 2: write the question -->
+    <!-- STEP 2: write the question + take a picture -->
     <section id="step-question" class="hidden">
-      <h2>Step 2: Write your question or exercise</h2>
+      <h2>Step 2: Your question or exercise</h2>
       <p class="tip">Explain it in your own words. Writing it down is already the beginning of understanding!</p>
       <textarea id="question-box" rows="4" placeholder="Type your question here..."></textarea>
+
+      <!-- NEW: take a picture of the homework.
+           input type="file" opens the photo library,
+           capture="environment" opens the camera on a phone. -->
+      <label class="photo-label" for="photo-input">&#128247; Take / choose a picture (optional)</label>
+      <input type="file" id="photo-input" accept="image/*" capture="environment" class="hidden">
+      <img id="photo-preview" class="hidden" alt="Your homework picture">
       <button id="start-coach" class="big-btn">Start coaching!</button>
     </section>
 
@@ -37,12 +44,15 @@
     <section id="step-coach" class="hidden">
       <h2>Step 3: The Coach Method</h2>
       <p id="subject-reminder"></p>
+      <!-- The picture comes back here, so the student always sees the exercise. -->
+      <img id="coach-photo" class="hidden" alt="Your homework picture">
       <div id="method-steps"></div>
       <div class="coach-actions">
-        <button id="hint-btn" class="big-btn">&#128161; Give me a hint</button>
+        <button id="hint-btn" class="big-btn">&#128161; Give me a hint (3 max)</button>
         <button id="done-btn" class="big-btn success">&#127881; I did it!</button>
       </div>
       <div id="hint-box" class="hidden"></div>
+      <div id="helpful-box" class="hidden"></div>
       <div id="celebration" class="hidden">&#127881;&#127881;&#127881;</div>
       <button id="restart-btn" class="hidden">Help me with another question</button>
     </section>
