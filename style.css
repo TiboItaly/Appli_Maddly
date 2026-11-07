@@ -98,8 +98,8 @@ textarea {
   box-sizing: border-box;
 }
 
-/* The live camera view, like a mini television */
-#camera-video {
+/* The live camera views, like a mini television */
+#camera-video, #work-camera-video {
   display: block;
   width: 100%;
   max-height: 350px;
@@ -139,20 +139,32 @@ textarea {
   line-height: 1.45;
 }
 
-/* Hedgy speaks on the left */
+/* Hedgy speaks on the left, with her little portrait! */
 .bubble.hedgy {
   background: #f6f0ff;
   border: 2px solid #7b2cbf;
   align-self: flex-start;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
 }
 
-.bubble.hedgy strong { color: #5a189a; }
+.hedgy-avatar { flex: 0 0 40px; width: 40px; height: 40px; }
+
+.hedgy-text strong { color: #5a189a; }
 
 /* The student speaks on the right */
 .bubble.student {
   background: #7b2cbf;
   color: white;
   align-self: flex-end;
+}
+
+/* A photo sent in the chat */
+.bubble img {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
 }
 
 .coach-actions { display: flex; flex-wrap: wrap; gap: 10px; }
