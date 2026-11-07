@@ -4,10 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homework Helper</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='22,38 30,14 44,32' fill='%237b2cbf'/%3E%3Cpolygon points='78,38 70,14 56,32' fill='%237b2cbf'/%3E%3Cellipse cx='50' cy='62' rx='33' ry='34' fill='%237b2cbf'/%3E%3Cellipse cx='50' cy='70' rx='20' ry='20' fill='%239d4edd'/%3E%3Ccircle cx='38' cy='50' r='13' fill='%23ffffff'/%3E%3Ccircle cx='62' cy='50' r='13' fill='%23ffffff'/%3E%3Ccircle cx='39' cy='52' r='5.5' fill='%23222222'/%3E%3Ccircle cx='61' cy='52' r='5.5' fill='%23222222'/%3E%3Cpolygon points='50,58 45,66 55,66' fill='%23ffb703'/%3E%3Cpolygon points='50,4 72,12 50,20 28,12' fill='%23222222'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
+    <!-- THE LOGO: an owl drawn in SVG, directly in the code.
+         SVG means "Scalable Vector Graphics":
+         the owl is made of circles, ellipses, polygons and lines,
+         so it stays perfectly sharp at any size, and we can change
+         any color just by editing one word! -->
+  <svg id="logo" width="90" height="90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="22,38 30,14 44,32" fill="#7b2cbf"/>
+    <polygon points="78,38 70,14 56,32" fill="#7b2cbf"/>
+    <ellipse cx="50" cy="62" rx="33" ry="34" fill="#7b2cbf"/>
+    <ellipse cx="50" cy="70" rx="20" ry="20" fill="#9d4edd"/>
+    <ellipse cx="22" cy="62" rx="9" ry="20" fill="#5a189a" transform="rotate(12 22 62)"/>
+    <ellipse cx="78" cy="62" rx="9" ry="20" fill="#5a189a" transform="rotate(-12 78 62)"/>
+    <circle cx="38" cy="50" r="13" fill="#ffffff"/>
+    <circle cx="62" cy="50" r="13" fill="#ffffff"/>
+    <circle cx="39" cy="52" r="5.5" fill="#222222"/>
+    <circle cx="61" cy="52" r="5.5" fill="#222222"/>
+    <circle cx="41" cy="50" r="1.8" fill="#ffffff"/>
+    <circle cx="63" cy="50" r="1.8" fill="#ffffff"/>
+    <polygon points="50,58 45,66 55,66" fill="#ffb703"/>
+    <line x1="30" y1="96" x2="40" y2="96" stroke="#ffb703" stroke-width="4" stroke-linecap="round"/>
+    <line x1="60" y1="96" x2="70" y2="96" stroke="#ffb703" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="50,4 72,12 50,20 28,12" fill="#222222"/>
+    <line x1="50" y1="20" x2="50" y2="30" stroke="#222222" stroke-width="2"/>
+    <circle cx="50" cy="32" r="3" fill="#ffb703"/>
+  </svg>
     <h1>Homework Helper</h1>
     <p class="tagline">Your homework coach. I guide you... but YOU find the answer!</p>
   </header>
@@ -31,9 +57,8 @@
       <p class="tip">Explain it in your own words. Writing it down is already the beginning of understanding!</p>
       <textarea id="question-box" rows="4" placeholder="Type your question here..."></textarea>
 
-      <!-- NEW: take a picture directly with the camera.
-           The <video> tag shows the camera stream LIVE,
-           like a mini television inside the page. -->
+      <!-- Take a picture directly with the camera.
+           The <video> tag shows the camera stream LIVE. -->
       <div>
         <button id="open-camera-btn" class="big-btn">&#128247; Take a picture with the camera</button>
       </div>
