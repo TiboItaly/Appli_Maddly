@@ -23,13 +23,47 @@
       <path d="M43,80 Q50,85 57,80" stroke="#4a3728" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>
     <h1>Homework Helper</h1>
-    <p class="tagline">Oreo guides you... but YOU find the answer!</p>
+    <p class="tagline" data-i18n="tagline">Oreo guides you... but YOU find the answer!</p>
   </header>
 
   <main>
+    <!-- STEP 0: welcome! Choose your language and your age (Maddly's idea). -->
+    <section id="step-welcome">
+      <h2 data-i18n="welcomeTitle">Welcome! Before we start, tell Oreo two things.</h2>
+      <p class="tip" data-i18n="chooseLang">1. In which language should Oreo talk to you?</p>
+      <div class="langs">
+        <button class="lang-btn selected" data-lang="en">&#127468;&#127463; English</button>
+        <button class="lang-btn" data-lang="fr">&#127467;&#127479; Fran&ccedil;ais</button>
+        <button class="lang-btn" data-lang="it">&#127470;&#127481; Italiano</button>
+        <button class="lang-btn" data-lang="es">&#127466;&#127480; Espa&ntilde;ol</button>
+        <button class="lang-btn" data-lang="de">&#127465;&#127466; Deutsch</button>
+        <button class="lang-btn" data-lang="zh">&#127464;&#127475; &#20013;&#25991;</button>
+      </div>
+      <p class="tip" data-i18n="chooseAge">2. How old are you?</p>
+      <div class="ages">
+        <button class="age-btn" data-age="3">3</button>
+        <button class="age-btn" data-age="4">4</button>
+        <button class="age-btn" data-age="5">5</button>
+        <button class="age-btn" data-age="6">6</button>
+        <button class="age-btn" data-age="7">7</button>
+        <button class="age-btn" data-age="8">8</button>
+        <button class="age-btn" data-age="9">9</button>
+        <button class="age-btn" data-age="10">10</button>
+        <button class="age-btn" data-age="11">11</button>
+        <button class="age-btn" data-age="12">12</button>
+        <button class="age-btn" data-age="13">13</button>
+        <button class="age-btn" data-age="14">14</button>
+        <button class="age-btn" data-age="15">15</button>
+        <button class="age-btn" data-age="16">16</button>
+        <button class="age-btn" data-age="17">17</button>
+        <button class="age-btn" data-age="18">18</button>
+      </div>
+      <button id="welcome-start" class="big-btn" data-i18n="start" disabled>Start!</button>
+    </section>
+
     <!-- STEP 1: choose a subject -->
-    <section id="step-subject">
-      <h2>Step 1: What subject is your homework?</h2>
+    <section id="step-subject" class="hidden">
+      <h2 data-i18n="step1Title">Step 1: What subject is your homework?</h2>
       <div class="subjects">
         <button class="subject" data-subject="maths">&#128290; Maths</button>
         <button class="subject" data-subject="english">&#127468;&#127463; English</button>
@@ -43,64 +77,65 @@
         <button class="subject" data-subject="history">&#127757; History / Geography</button>
         <button class="subject" data-subject="other">&#127919; Something else</button>
       </div>
+      <button id="change-setup-btn" class="setup-link" data-i18n="changeSetup">&#128394; Change language or age</button>
     </section>
 
     <!-- STEP 2: question + confidence + camera -->
     <section id="step-question" class="hidden">
-      <h2>Step 2: Your question or exercise</h2>
-      <p class="tip">Explain it in your own words. Writing it down is already the beginning of understanding!</p>
-      <textarea id="question-box" rows="4" placeholder="Type your question here..."></textarea>
+      <h2 data-i18n="step2Title">Step 2: Your question or exercise</h2>
+      <p class="tip" data-i18n="step2Tip">Explain it in your own words. Writing it down is already the beginning of understanding!</p>
+      <textarea id="question-box" rows="4" data-i18n-ph="questionPh" placeholder="Type your question here..."></textarea>
 
-      <p class="tip">How good do you feel in this subject? Oreo adapts to you!</p>
+      <p class="tip" data-i18n="confTip">How good do you feel in this subject? Oreo adapts to you!</p>
       <div class="confidence">
-        <button class="conf-btn" data-level="high">&#128526; Very good</button>
-        <button class="conf-btn" data-level="okay">&#128578; Okay</button>
-        <button class="conf-btn" data-level="low">&#128560; I find it hard</button>
+        <button class="conf-btn" data-level="high" data-i18n="confHigh">&#128526; Very good</button>
+        <button class="conf-btn" data-level="okay" data-i18n="confOkay">&#128578; Okay</button>
+        <button class="conf-btn" data-level="low" data-i18n="confLow">&#128560; I find it hard</button>
       </div>
 
       <div>
-        <button id="open-camera-btn" class="big-btn">&#128247; Take a picture with the camera</button>
+        <button id="open-camera-btn" class="big-btn" data-i18n="cameraBtn">&#128247; Take a picture with the camera</button>
       </div>
       <video id="camera-video" class="hidden" autoplay playsinline></video>
       <div>
-        <button id="snap-btn" class="big-btn hidden">&#128247; Snap!</button>
+        <button id="snap-btn" class="big-btn hidden" data-i18n="snap">&#128247; Snap!</button>
       </div>
-      <img id="photo-preview" class="hidden" alt="Your homework picture">
-      <button id="start-coach" class="big-btn">Start coaching with Oreo!</button>
+      <img id="photo-preview" class="hidden" data-i18n-alt="photoAlt" alt="Your homework picture">
+      <button id="start-coach" class="big-btn" data-i18n="startCoach">Start coaching with Oreo!</button>
     </section>
 
     <!-- STEP 3: a real conversation with Oreo -->
     <section id="step-coach" class="hidden">
-      <h2>Step 3: Coaching with Oreo</h2>
+      <h2 data-i18n="step3Title">Step 3: Coaching with Oreo</h2>
       <p id="subject-reminder"></p>
-      <img id="coach-photo" class="hidden" alt="Your homework picture">
+      <img id="coach-photo" class="hidden" data-i18n-alt="photoAlt" alt="Your homework picture">
       <div id="chat"></div>
-      <textarea id="chat-input" rows="2" placeholder="Write your answer to Oreo here..."></textarea>
+      <textarea id="chat-input" rows="2" data-i18n-ph="chatPh" placeholder="Write your answer to Oreo here..."></textarea>
       <div class="coach-actions">
-        <button id="send-btn" class="big-btn">&#128172; Send to Oreo</button>
-        <button id="hint-btn" class="big-btn">&#128161; Hint (3 max)</button>
+        <button id="send-btn" class="big-btn" data-i18n="send">&#128172; Send to Oreo</button>
+        <button id="hint-btn" class="big-btn" data-i18n="hintBtn">&#128161; Hint (3 max)</button>
       </div>
 
       <!-- The judgment buttons: they appear after you check your answer. -->
       <div class="judge hidden" id="judge-buttons">
-        <button id="judge-correct" class="big-btn success">&#9989; It's correct!</button>
-        <button id="judge-check" class="big-btn">&#129300; Not sure, let me check</button>
-        <button id="judge-wrong" class="big-btn wrong">&#128533; I got it wrong</button>
+        <button id="judge-correct" class="big-btn success" data-i18n="judgeCorrect">&#9989; It's correct!</button>
+        <button id="judge-check" class="big-btn" data-i18n="judgeCheck">&#129300; Not sure, let me check</button>
+        <button id="judge-wrong" class="big-btn wrong" data-i18n="judgeWrong">&#128533; I got it wrong</button>
       </div>
 
       <!-- Show your written work to Oreo with a photo. -->
       <div>
-        <button id="work-camera-btn" class="big-btn">&#128247; Show my work to Oreo</button>
+        <button id="work-camera-btn" class="big-btn" data-i18n="workBtn">&#128247; Show my work to Oreo</button>
       </div>
       <video id="work-camera-video" class="hidden" autoplay playsinline></video>
       <div>
-        <button id="work-snap-btn" class="big-btn hidden">&#128247; Snap my work!</button>
+        <button id="work-snap-btn" class="big-btn hidden" data-i18n="snapWork">&#128247; Snap my work!</button>
       </div>
 
       <div id="hint-box" class="hidden"></div>
       <div id="helpful-box" class="hidden"></div>
       <div id="celebration" class="hidden"></div>
-      <button id="restart-btn" class="hidden">Help me with another question</button>
+      <button id="restart-btn" class="hidden" data-i18n="restart">Help me with another question</button>
     </section>
   </main>
 
