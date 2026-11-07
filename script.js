@@ -1435,7 +1435,9 @@ document.getElementById("send-btn").addEventListener("click", function () {
     // We are walking through the method.
     if (hit(lower, "dontknow")) {
       oreoSay(t("dontKnow"));
-    } else if (text.length < 5) {
+    } else if (text.length < 5 && chosenAge > 12) {
+      // Little children often type a single word: that is fine, Oreo continues.
+      // Only teenagers are gently asked for a fuller sentence.
       oreoSay(t("tellMore"));
     } else {
       var encList = (d.encouragementsAge && ageBand() !== "mid" ? d.encouragementsAge[ageBand()] : d.encouragements);
