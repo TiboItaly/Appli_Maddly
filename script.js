@@ -59,6 +59,20 @@ var SUBJECTS = {
       "Read your sentence out loud: does it sound natural? Check gender and verb endings!"
     ]
   },
+  reading: {
+    name: "Reading",
+    steps: [
+      { title: "UNDERSTAND", text: "First, a secret: lots of students find reading hard, and every one of them learned to read anyway. Look at your text and tell me: how long is it, and what must you do after reading (answer questions, retell the story...)?" },
+      { title: "PLAN", text: "We never read a big text all at once: we cut it into small bites, like a cake! One paragraph at a time. Put your finger or a pencil under the line to help your eyes follow. Tell me which small piece you will start with." },
+      { title: "TRY", text: "Read your first small piece slowly, out loud if you can. Then tell me in ONE sentence what happened in it. Just one piece, that is the whole mission!" },
+      { title: "CHECK", text: "Now tell me the whole text in your own words, piece by piece, like a movie summary. If one piece is still fuzzy, read ONLY that piece again. Which piece was the hardest?" }
+    ],
+    hints: [
+      "Cut the text into small pieces and celebrate each piece you finish. Small wins make reading lighter!",
+      "Use your finger or a pencil under the line: your eyes follow better and you do not lose your place.",
+      "If a word blocks you: skip it, read the rest of the sentence, and guess like a detective. Then come back to the word."
+    ]
+  },
   science: {
     name: "Science",
     steps: [
@@ -138,11 +152,6 @@ var HEDGY_AVATAR = '<svg class="hedgy-avatar" viewBox="0 0 100 100" xmlns="http:
 var chosenSubject = null;
 var confidence = "okay";
 var hintCount = 0;
-// stepIndex meaning:
-//   -1 = not started
-//   0 to 3 = we are on this step of the method
-//   4 = we are waiting for the FINAL answer
-//   5 = the student is checking (judgment buttons visible)
 var stepIndex = -1;
 var cameraStream = null;
 var workStream = null;
@@ -338,7 +347,6 @@ document.getElementById("send-btn").addEventListener("click", function () {
         var step = subject.steps[stepIndex];
         hedgySay("<strong>Step " + (stepIndex + 1) + " - " + step.title + ":</strong> " + step.text);
       } else {
-        // All steps done: now we want the final answer.
         hedgySay("You worked through my whole method, well done so far! Now write your FINAL answer here, and I will help you check it like a champion.");
       }
     }
@@ -351,6 +359,8 @@ document.getElementById("send-btn").addEventListener("click", function () {
     // Free conversation with Hedgy.
     if (lower.indexOf("thank") !== -1) {
       hedgySay("You are very welcome! Helping YOU find answers is my favorite job. &#129413;");
+    } else if (lower.indexOf("hate") !== -1) {
+      hedgySay("It is okay to hate a subject sometimes, really. The good news: hating it does not stop you from being good at it, one small step at a time. Let's take the smallest step possible together!");
     } else if (lower.indexOf("hard") !== -1 || lower.indexOf("difficult") !== -1 || lower.indexOf("stuck") !== -1) {
       hedgySay("I hear you. Every student finds things hard sometimes, that is how brains grow! Try the Hint button, and after 3 hints I have a list of great strategies for you.");
     } else if (lower.indexOf("found") !== -1 || lower.indexOf("solved") !== -1 || lower.indexOf("got it") !== -1) {
@@ -383,7 +393,7 @@ document.getElementById("hint-btn").addEventListener("click", function () {
   }
 });
 
-// THE JUDGMENT BUTTONS: how the student feels about their checked answer.
+// THE JUDGMENT BUTTONS.
 
 // Correct: celebration!
 document.getElementById("judge-correct").addEventListener("click", function () {
@@ -396,11 +406,15 @@ document.getElementById("judge-correct").addEventListener("click", function () {
   hedgySay("Well done! You checked your answer like a champion, and you found it yourself. I am proud of you! You can keep talking to me below if you want.");
 });
 
-// Not sure: teach how to check better.
+// Not sure: teach how to check better, adapted to the subject.
 document.getElementById("judge-check").addEventListener("click", function () {
-  hide("judge-buttons");
-  hedgySay("Good instinct: checking is exactly what strong students do! Here is my checklist: 1) Read the question again and compare it word by word with your answer. 2) Redo the difficult line slowly. 3) Compare with a similar example in your notes. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
-  show("judge-buttons");
+  if (chosenSubject === "maths") {
+    hedgySay("Let's use the OPPOSITE OPERATION trick! Adding and subtracting are opposites: if you think you added, subtract to check. Multiplying and dividing are opposites: if you think you multiplied, divide to check. Example: you found 7 &times; 8 = 56? Then check with 56 &divide; 8. If it gives 7, your answer is correct! Try it and tell me what you find.");
+  } else if (chosenSubject === "reading") {
+    hedgySay("Let's check your reading! Retell the text piece by piece in your own words. If one piece is missing or fuzzy, read ONLY that piece again, out loud and slowly. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
+  } else {
+    hedgySay("Good instinct: checking is exactly what strong students do! Here is my checklist: 1) Read the question again and compare it word by word with your answer. 2) Redo the difficult line slowly. 3) Compare with a similar example in your notes. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
+  }
 });
 
 // Wrong: try again, back to the TRY step.
