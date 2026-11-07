@@ -54,6 +54,23 @@ section {
 .big-btn.success { background: #2b9348; }
 .big-btn.success:hover { background: #1f7a35; }
 
+/* The "Help me with another question" button: BIG and easy to tap! */
+#restart-btn {
+  font-size: 1.25rem;
+  padding: 18px 30px;
+  border-radius: 16px;
+  border: none;
+  background: #5a189a;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#restart-btn:hover { background: #7b2cbf; transform: scale(1.02); }
+
 textarea {
   width: 100%;
   font-size: 1rem;
@@ -63,7 +80,7 @@ textarea {
   box-sizing: border-box;
 }
 
-/* NEW: the live camera view, like a mini television */
+/* The live camera view, like a mini television */
 #camera-video {
   display: block;
   width: 100%;
