@@ -1,0 +1,136 @@
+/* ===== style.css =====
+   This file decides how the app LOOKS.
+   Colors, sizes, round corners... all the beauty lives here. */
+
+/* Google-style font stack */
+body {
+  font-family: "Comic Sans MS", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(160deg, #ffe9f3, #e9f3ff);
+  margin: 0;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+
+h1 {
+  font-size: 2.4rem;
+  color: #7b2cbf;
+  margin: 0;
+}
+
+.tagline {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* The subject buttons */
+.subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.subject {
+  font-size: 1.05rem;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: 3px solid #7b2cbf;
+  background: white;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.subject:hover {
+  background: #7b2cbf;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* The big buttons */
+.big-btn {
+  font-size: 1.1rem;
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: none;
+  background: #7b2cbf;
+  color: white;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.big-btn:hover {
+  background: #5a189a;
+}
+
+.big-btn.success {
+  background: #2b9348;
+}
+
+.big-btn.success:hover {
+  background: #1f7a35;
+}
+
+textarea {
+  width: 100%;
+  font-size: 1rem;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* One method step (one line of the method) */
+.method-step {
+  background: #f6f0ff;
+  border-left: 6px solid #7b2cbf;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-radius: 8px;
+}
+
+.method-step strong {
+  color: #5a189a;
+}
+
+/* The hint box */
+#hint-box {
+  background: #fff8d6;
+  border-left: 6px solid #ffb703;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border-radius: 8px;
+}
+
+#celebration {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 15px;
+}
+
+/* A class that hides an element */
+.hidden {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+}

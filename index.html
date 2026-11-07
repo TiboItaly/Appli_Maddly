@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework Helper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Homework Helper</h1>
+    <p class="tagline">Your homework coach. I guide you... but YOU find the answer!</p>
+  </header>
+
+  <main>
+    <!-- STEP 1: choose a subject -->
+    <section id="step-subject">
+      <h2>Step 1: What subject is your homework?</h2>
+      <div class="subjects">
+        <button class="subject" data-subject="maths">&#128290; Maths</button>
+        <button class="subject" data-subject="english">&#128221; English / French</button>
+        <button class="subject" data-subject="science">&#127793; Science</button>
+        <button class="subject" data-subject="history">&#127757; History / Geography</button>
+        <button class="subject" data-subject="other">&#127919; Something else</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: write the question -->
+    <section id="step-question" class="hidden">
+      <h2>Step 2: Write your question or exercise</h2>
+      <p class="tip">Explain it in your own words. Writing it down is already the beginning of understanding!</p>
+      <textarea id="question-box" rows="4" placeholder="Type your question here..."></textarea>
+      <button id="start-coach" class="big-btn">Start coaching!</button>
+    </section>
+
+    <!-- STEP 3: the coach method -->
+    <section id="step-coach" class="hidden">
+      <h2>Step 3: The Coach Method</h2>
+      <p id="subject-reminder"></p>
+      <div id="method-steps"></div>
+      <div class="coach-actions">
+        <button id="hint-btn" class="big-btn">&#128161; Give me a hint</button>
+        <button id="done-btn" class="big-btn success">&#127881; I did it!</button>
+      </div>
+      <div id="hint-box" class="hidden"></div>
+      <div id="celebration" class="hidden">&#127881;&#127881;&#127881;</div>
+      <button id="restart-btn" class="hidden">Help me with another question</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made by Maddly, Grade 6 &#128513;</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
