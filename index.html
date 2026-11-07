@@ -54,7 +54,6 @@
         <button class="conf-btn" data-level="low">&#128560; I find it hard</button>
       </div>
 
-      <!-- Take a picture directly with the camera. -->
       <div>
         <button id="open-camera-btn" class="big-btn">&#128247; Take a picture with the camera</button>
       </div>
@@ -70,17 +69,22 @@
     <section id="step-coach" class="hidden">
       <h2>Step 3: Coaching with Hedgy</h2>
       <p id="subject-reminder"></p>
-      <!-- The photo comes back here, so the student always sees the exercise. -->
       <img id="coach-photo" class="hidden" alt="Your homework picture">
       <div id="chat"></div>
       <textarea id="chat-input" rows="2" placeholder="Write your answer to Hedgy here..."></textarea>
       <div class="coach-actions">
         <button id="send-btn" class="big-btn">&#128172; Send to Hedgy</button>
         <button id="hint-btn" class="big-btn">&#128161; Hint (3 max)</button>
-        <button id="done-btn" class="big-btn success">&#127881; I did it!</button>
       </div>
 
-      <!-- NEW: show your written work to Hedgy with a photo. -->
+      <!-- The judgment buttons: they appear after you check your answer. -->
+      <div class="judge hidden" id="judge-buttons">
+        <button id="judge-correct" class="big-btn success">&#9989; It's correct!</button>
+        <button id="judge-check" class="big-btn">&#129300; Not sure, let me check</button>
+        <button id="judge-wrong" class="big-btn wrong">&#128533; I got it wrong</button>
+      </div>
+
+      <!-- Show your written work to Hedgy with a photo. -->
       <div>
         <button id="work-camera-btn" class="big-btn">&#128247; Show my work to Hedgy</button>
       </div>

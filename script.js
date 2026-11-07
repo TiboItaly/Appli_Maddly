@@ -9,7 +9,7 @@ var SUBJECTS = {
       { title: "UNDERSTAND", text: "Read the exercise twice. Then tell me: what exactly are you asked to find, and which numbers or facts do you have?" },
       { title: "PLAN", text: "Which operation could help: adding, subtracting, multiplying, dividing? Tell me which one you would pick and why." },
       { title: "TRY", text: "Write your calculation here, step by step. You can also tap 'Show my work to Hedgy' and photograph your paper!" },
-      { title: "CHECK", text: "Look at your result: is it logical? (A dog cannot weigh 900 kg!) Tell me how you would check it." }
+      { title: "CHECK", text: "Look at your result: is it logical? (A dog cannot weigh 900 kg!) In maths, the best trick is the opposite operation: try it and tell me what you found." }
     ],
     hints: [
       "Read the question again and circle the key words. What exactly are you asked to find?",
@@ -23,7 +23,7 @@ var SUBJECTS = {
       { title: "UNDERSTAND", text: "What kind of task is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Find the key words. Is there a rule or example in your notebook that looks similar? Which one?" },
       { title: "TRY", text: "Write your answer, or your first draft, right here. You can also photograph it with 'Show my work to Hedgy'!" },
-      { title: "CHECK", text: "Read your answer again: does it answer the WHOLE question? Check spelling, capitals and punctuation, then tell me." }
+      { title: "CHECK", text: "Read your answer out loud slowly, then check spelling, capitals and punctuation. Tell me what you noticed." }
     ],
     hints: [
       "What kind of task is it: reading, writing, grammar, vocabulary? The instruction words tell you.",
@@ -37,7 +37,7 @@ var SUBJECTS = {
       { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Which rule or example from your Italian notebook looks similar? Tell me which one you think applies." },
       { title: "TRY", text: "Write your answer or first draft here, in Italian. You can also photograph your paper with 'Show my work to Hedgy'!" },
-      { title: "CHECK", text: "Check articles, gender, verb endings and spelling. Tell me what you corrected." }
+      { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check articles, gender, verb endings and spelling. Tell me what you corrected." }
     ],
     hints: [
       "What kind of exercise is it? The instruction words tell you.",
@@ -51,7 +51,7 @@ var SUBJECTS = {
       { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Which rule or example from your Spanish notebook looks similar? Tell me which one you think applies." },
       { title: "TRY", text: "Write your answer or first draft here, in Spanish. You can also photograph your paper with 'Show my work to Hedgy'!" },
-      { title: "CHECK", text: "Check gender, articles, verb endings and spelling. Tell me what you corrected." }
+      { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check gender, articles, verb endings and spelling. Tell me what you corrected." }
     ],
     hints: [
       "What kind of exercise is it? The instruction words tell you.",
@@ -65,7 +65,7 @@ var SUBJECTS = {
       { title: "UNDERSTAND", text: "What is the question really asking? Tell me in your own words." },
       { title: "PLAN", text: "What do you already know about this topic? You can also draw a little sketch on paper." },
       { title: "TRY", text: "Explain your idea here in your own words, like you would to a friend. You can also photograph your sketch!" },
-      { title: "CHECK", text: "Does your explanation make sense? Find one detail in your book or notes that confirms it, and tell me." }
+      { title: "CHECK", text: "Find one detail in your book or notes that confirms your idea. Tell me if it confirms it or not." }
     ],
     hints: [
       "What is the question really asking? Underline the science words.",
@@ -138,6 +138,11 @@ var HEDGY_AVATAR = '<svg class="hedgy-avatar" viewBox="0 0 100 100" xmlns="http:
 var chosenSubject = null;
 var confidence = "okay";
 var hintCount = 0;
+// stepIndex meaning:
+//   -1 = not started
+//   0 to 3 = we are on this step of the method
+//   4 = we are waiting for the FINAL answer
+//   5 = the student is checking (judgment buttons visible)
 var stepIndex = -1;
 var cameraStream = null;
 var workStream = null;
@@ -164,7 +169,6 @@ function stopWorkCamera() {
   hide("work-snap-btn");
 }
 
-// Hedgy says something in the chat, with her portrait next to it.
 function hedgySay(text) {
   var chat = document.getElementById("chat");
   var bubble = document.createElement("div");
@@ -174,7 +178,6 @@ function hedgySay(text) {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// The student writes in the chat.
 function studentSay(text) {
   var chat = document.getElementById("chat");
   var bubble = document.createElement("div");
@@ -184,7 +187,6 @@ function studentSay(text) {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// The student sends a photo of their work in the chat.
 function studentPhoto(photoData) {
   var chat = document.getElementById("chat");
   var bubble = document.createElement("div");
@@ -197,7 +199,6 @@ function studentPhoto(photoData) {
   chat.scrollTop = chat.scrollHeight;
 }
 
-// Hedgy's greeting depends on how good the student feels.
 function greeting(level, subjectName) {
   if (level === "high") {
     return "Hello! I am Hedgy, your coach. You feel strong in " + subjectName + ", so today I will help you be precise and check your work like a champion!";
@@ -226,7 +227,6 @@ document.querySelectorAll(".conf-btn").forEach(function (button) {
   });
 });
 
-// Open the camera (for the exercise picture).
 document.getElementById("open-camera-btn").addEventListener("click", function () {
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
@@ -258,7 +258,6 @@ document.getElementById("snap-btn").addEventListener("click", function () {
   stopCamera();
 });
 
-// NEW: open the camera to show your WORK to Hedgy.
 document.getElementById("work-camera-btn").addEventListener("click", function () {
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
@@ -277,7 +276,6 @@ document.getElementById("work-camera-btn").addEventListener("click", function ()
   }
 });
 
-// NEW: send the photo of your work into the chat.
 document.getElementById("work-snap-btn").addEventListener("click", function () {
   var video = document.getElementById("work-camera-video");
   var drawingSheet = document.createElement("canvas");
@@ -287,7 +285,7 @@ document.getElementById("work-snap-btn").addEventListener("click", function () {
   var photoData = drawingSheet.toDataURL("image/jpeg", 0.8);
   studentPhoto(photoData);
   stopWorkCamera();
-  hedgySay("Thank you for showing me your work! I cannot read every detail of a picture yet, but I can see that you are writing it down step by step, and that is exactly the right method. Does it feel finished to you, or do you want to improve a part?");
+  hedgySay("Thank you for showing me your work! I cannot read every detail of a picture yet, but I can see that you are writing it down step by step, and that is exactly the right method. Keep going!");
 });
 
 // Start coaching.
@@ -307,6 +305,7 @@ document.getElementById("start-coach").addEventListener("click", function () {
   hide("helpful-box");
   hide("celebration");
   hide("restart-btn");
+  hide("judge-buttons");
   show("step-coach");
   hedgySay(greeting(confidence, subject.name));
   var firstStep = subject.steps[0];
@@ -327,6 +326,7 @@ document.getElementById("send-btn").addEventListener("click", function () {
   var subject = SUBJECTS[chosenSubject];
 
   if (stepIndex >= 0 && stepIndex < subject.steps.length) {
+    // We are walking through the method.
     if (lower.indexOf("don't know") !== -1 || lower.indexOf("dont know") !== -1 || lower.indexOf("no idea") !== -1) {
       hedgySay("Not knowing is completely normal, it is the start of learning! Press the Hint button if you want a clue, or try answering with what you THINK it could be.");
     } else if (text.length < 5) {
@@ -338,16 +338,23 @@ document.getElementById("send-btn").addEventListener("click", function () {
         var step = subject.steps[stepIndex];
         hedgySay("<strong>Step " + (stepIndex + 1) + " - " + step.title + ":</strong> " + step.text);
       } else {
-        hedgySay("You worked through all four steps of my method! Now look at your work: does the answer seem logical? If you found it, tap <strong>I did it!</strong>. If not, take a hint, or ask for helpful things to do.");
+        // All steps done: now we want the final answer.
+        hedgySay("You worked through my whole method, well done so far! Now write your FINAL answer here, and I will help you check it like a champion.");
       }
     }
+  } else if (stepIndex === subject.steps.length) {
+    // We received the final answer: teach the student to self-check.
+    hedgySay("Good! Now check it before we celebrate. Do this: 1) Read the question one more time. 2) Check your work line by line. 3) In maths, try the opposite operation; in languages, read it out loud. When you have checked, tap the button that matches what you found below.");
+    show("judge-buttons");
+    stepIndex = stepIndex + 1;
   } else {
+    // Free conversation with Hedgy.
     if (lower.indexOf("thank") !== -1) {
       hedgySay("You are very welcome! Helping YOU find answers is my favorite job. &#129413;");
     } else if (lower.indexOf("hard") !== -1 || lower.indexOf("difficult") !== -1 || lower.indexOf("stuck") !== -1) {
       hedgySay("I hear you. Every student finds things hard sometimes, that is how brains grow! Try the Hint button, and after 3 hints I have a list of great strategies for you.");
     } else if (lower.indexOf("found") !== -1 || lower.indexOf("solved") !== -1 || lower.indexOf("got it") !== -1) {
-      hedgySay("Fantastic! When you are sure, tap <strong>I did it!</strong> so we can celebrate together!");
+      hedgySay("Fantastic! When you are sure, tap <strong>It's correct!</strong> so we can celebrate together!");
     } else {
       hedgySay("I am listening! Remember: I never give answers, but I never let go of your hand either. Tell me which part you are working on right now.");
     }
@@ -376,16 +383,33 @@ document.getElementById("hint-btn").addEventListener("click", function () {
   }
 });
 
-// Celebration.
-document.getElementById("done-btn").addEventListener("click", function () {
+// THE JUDGMENT BUTTONS: how the student feels about their checked answer.
+
+// Correct: celebration!
+document.getElementById("judge-correct").addEventListener("click", function () {
+  hide("judge-buttons");
   stepIndex = -1;
   var celebration = document.getElementById("celebration");
-  celebration.innerHTML = "&#127881; Congratulations! You found the answer YOURSELF. &#127881;<br>That is called learning. See you at the next homework!";
+  celebration.innerHTML = "&#127881; WELL DONE! You found the answer YOURSELF. &#127881;<br>That is called learning. See you at the next homework!";
   show("celebration");
   show("restart-btn");
-  hide("hint-box");
-  hide("helpful-box");
-  hedgySay("Amazing work! I am proud of you. If you want, you can keep talking to me below.");
+  hedgySay("Well done! You checked your answer like a champion, and you found it yourself. I am proud of you! You can keep talking to me below if you want.");
+});
+
+// Not sure: teach how to check better.
+document.getElementById("judge-check").addEventListener("click", function () {
+  hide("judge-buttons");
+  hedgySay("Good instinct: checking is exactly what strong students do! Here is my checklist: 1) Read the question again and compare it word by word with your answer. 2) Redo the difficult line slowly. 3) Compare with a similar example in your notes. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
+  show("judge-buttons");
+});
+
+// Wrong: try again, back to the TRY step.
+document.getElementById("judge-wrong").addEventListener("click", function () {
+  hide("judge-buttons");
+  var subject = SUBJECTS[chosenSubject];
+  hedgySay("That is completely fine: wrong answers are how brains grow stronger! The fact that you found it yourself is already excellent work. Let's try again together, from the TRY step.");
+  stepIndex = 2;
+  hedgySay("<strong>Step 3 - " + subject.steps[2].title + ":</strong> " + subject.steps[2].text);
 });
 
 // Restart.
@@ -398,5 +422,6 @@ document.getElementById("restart-btn").addEventListener("click", function () {
   document.getElementById("question-box").value = "";
   hide("photo-preview");
   hide("coach-photo");
+  hide("judge-buttons");
   document.querySelectorAll(".conf-btn").forEach(function (b) { b.classList.remove("selected"); });
 });
