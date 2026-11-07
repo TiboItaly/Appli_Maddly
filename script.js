@@ -26,6 +26,10 @@ var L10N = {
       start: "Start!",
       changeSetup: "🖊 Change language or age",
       back: "🔙 Back",
+      speakBtn: "🎤 Speak with your voice",
+      speakListening: "🔴 Oreo is listening... speak now!",
+      speakNone: "😕 Your voice does not work on this device. Ask a grown-up to type for you!",
+      speakHeard: "👂 I heard: ",
       yourQuestion: "Your question was: ",
       aiMode: "✨ AI mode: Oreo really thinks about YOUR question",
       step1Title: "Step 1: What subject is your homework?",
@@ -223,6 +227,10 @@ var L10N = {
       start: "Commencer !",
       changeSetup: "🖊 Changer la langue ou l'&acirc;ge",
       back: "🔙 Retour",
+      speakBtn: "🎤 Parler avec ta voix",
+      speakListening: "🔴 Oreo t'écoute... parle maintenant !",
+      speakNone: "😕 Ta voix ne marche pas sur cet appareil. Demande à un grand de taper pour toi !",
+      speakHeard: "👂 J'ai entendu : ",
       yourQuestion: "Ta question était : ",
       aiMode: "✨ Mode IA : Oreo réfléchit vraiment à TA question",
       step1Title: "Étape 1 : Quel est le sujet de tes devoirs ?",
@@ -420,6 +428,10 @@ var L10N = {
       start: "Inizia!",
       changeSetup: "🖊 Cambia lingua o età",
       back: "🔙 Indietro",
+      speakBtn: "🎤 Parla con la tua voce",
+      speakListening: "🔴 Oreo ti ascolta... parla ora!",
+      speakNone: "😕 La tua voce non funziona su questo apparecchio. Chiedi a un grande di scrivere per te!",
+      speakHeard: "👂 Ho sentito: ",
       yourQuestion: "La tua domanda era: ",
       aiMode: "✨ Modalità IA: Oreo pensa davvero alla TUA domanda",
       step1Title: "Passo 1: di che materia sono i tuoi compiti?",
@@ -617,6 +629,10 @@ var L10N = {
       start: "¡Empezar!",
       changeSetup: "🖊 Cambiar idioma o edad",
       back: "🔙 Atrás",
+      speakBtn: "🎤 Hablar con tu voz",
+      speakListening: "🔴 Oreo te escucha... habla ahora!",
+      speakNone: "😕 Tu voz no funciona en este aparato. ¡Pide a un mayor que escriba por ti!",
+      speakHeard: "👂 Escuché: ",
       yourQuestion: "Tu pregunta era: ",
       aiMode: "✨ Modo IA: Oreo piensa de verdad en TU pregunta",
       step1Title: "Paso 1: ¿De qué materia son tus deberes?",
@@ -814,6 +830,10 @@ var L10N = {
       start: "Los geht's!",
       changeSetup: "🖊 Sprache oder Alter ändern",
       back: "🔙 Zurück",
+      speakBtn: "🎤 Mit deiner Stimme sprechen",
+      speakListening: "🔴 Oreo hört zu... sprich jetzt!",
+      speakNone: "😕 Deine Stimme geht auf diesem Gerät nicht. Bitte einen Erwachsenen, für dich zu tippen!",
+      speakHeard: "👂 Ich habe gehört: ",
       yourQuestion: "Deine Frage war: ",
       aiMode: "✨ KI-Modus: Oreo denkt wirklich über DEINE Frage nach",
       step1Title: "Schritt 1: In welchem Fach sind deine Hausaufgaben?",
@@ -1011,6 +1031,10 @@ var L10N = {
       start: "开始！",
       changeSetup: "🖊 换语言或年龄",
       back: "🔙 返回",
+      speakBtn: "🎤 用你的声音说",
+      speakListening: "🔴 Oreo 在听……现在说吧！",
+      speakNone: "😕 这个设备不能用语音。请大人帮你打字！",
+      speakHeard: "👂 我听到了：",
       yourQuestion: "你的问题是：",
       aiMode: "✨ AI 模式：Oreo 真的在思考你的问题",
       step1Title: "第 1 步：你的作业是哪一科？",
@@ -1578,6 +1602,48 @@ document.getElementById("start-coach").addEventListener("click", function () {
   }
   var data = subjectData(chosenSubject);
   oreoSay("<strong>" + t("stepLabel") + " 1 - " + stepTitle(0) + ":</strong> " + data.steps[0]);
+});
+
+// ---- 7b. SPEAK WITH YOUR VOICE ----
+// Little children who cannot type yet can simply talk to Oreo.
+var REC_LANGS = { en: "en-US", fr: "fr-FR", it: "it-IT", es: "es-ES", de: "de-DE", zh: "zh-CN" };
+
+function startListening(inputEl, autoSend) {
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    oreoSay(t("speakNone"));
+    return;
+  }
+  var btn = inputEl.id === "chat-input" ? document.getElementById("chat-mic-btn") : document.getElementById("question-mic-btn");
+  var rec = new SR();
+  rec.lang = REC_LANGS[chosenLang] || "en-US";
+  rec.interimResults = false;
+  rec.maxAlternatives = 1;
+  btn.disabled = true;
+  oreoSay(t("speakListening"));
+  rec.onresult = function (event) {
+    var said = event.results[0][0].transcript;
+    inputEl.value = (inputEl.value.trim() === "" ? "" : inputEl.value.trim() + " ") + said;
+    oreoSay(t("speakHeard") + said);
+    // The little ones cannot press Send either: Oreo sends for them.
+    if (autoSend && ageBand() === "young") {
+      document.getElementById("send-btn").click();
+    }
+  };
+  rec.onerror = function () {
+    oreoSay(t("speakNone"));
+  };
+  rec.onend = function () {
+    btn.disabled = false;
+  };
+  rec.start();
+}
+
+document.getElementById("question-mic-btn").addEventListener("click", function () {
+  startListening(document.getElementById("question-box"), false);
+});
+document.getElementById("chat-mic-btn").addEventListener("click", function () {
+  startListening(document.getElementById("chat-input"), true);
 });
 
 // ---- 8. THE CONVERSATION ----
