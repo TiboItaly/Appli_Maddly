@@ -63,20 +63,19 @@ textarea {
   box-sizing: border-box;
 }
 
-/* NEW: the button that looks like a camera choice */
-.photo-label {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 10px 16px;
+/* NEW: the live camera view, like a mini television */
+#camera-video {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  margin-top: 12px;
   border-radius: 12px;
-  border: 2px dashed #7b2cbf;
-  color: #7b2cbf;
-  cursor: pointer;
+  border: 2px solid #7b2cbf;
+  background: #222;
+  object-fit: contain;
 }
 
-.photo-label:hover { background: #f6f0ff; }
-
-/* NEW: the picture of the homework */
+/* The picture of the homework (after "Snap!") */
 #photo-preview, #coach-photo {
   display: block;
   max-width: 100%;
@@ -104,7 +103,7 @@ textarea {
   border-radius: 8px;
 }
 
-/* NEW: the box with helpful things to do (after 3 hints) */
+/* The box with helpful things to do (after 3 hints) */
 #helpful-box {
   background: #e0f4f7;
   border-left: 6px solid #219ebc;

@@ -25,17 +25,22 @@
       </div>
     </section>
 
-    <!-- STEP 2: write the question + take a picture -->
+    <!-- STEP 2: write the question + live camera -->
     <section id="step-question" class="hidden">
       <h2>Step 2: Your question or exercise</h2>
       <p class="tip">Explain it in your own words. Writing it down is already the beginning of understanding!</p>
       <textarea id="question-box" rows="4" placeholder="Type your question here..."></textarea>
 
-      <!-- NEW: take a picture of the homework.
-           input type="file" opens the photo library,
-           capture="environment" opens the camera on a phone. -->
-      <label class="photo-label" for="photo-input">&#128247; Take / choose a picture (optional)</label>
-      <input type="file" id="photo-input" accept="image/*" capture="environment" class="hidden">
+      <!-- NEW: take a picture directly with the camera.
+           The <video> tag shows the camera stream LIVE,
+           like a mini television inside the page. -->
+      <div>
+        <button id="open-camera-btn" class="big-btn">&#128247; Take a picture with the camera</button>
+      </div>
+      <video id="camera-video" class="hidden" autoplay playsinline></video>
+      <div>
+        <button id="snap-btn" class="big-btn hidden">&#128247; Snap!</button>
+      </div>
       <img id="photo-preview" class="hidden" alt="Your homework picture">
       <button id="start-coach" class="big-btn">Start coaching!</button>
     </section>
@@ -44,7 +49,7 @@
     <section id="step-coach" class="hidden">
       <h2>Step 3: The Coach Method</h2>
       <p id="subject-reminder"></p>
-      <!-- The picture comes back here, so the student always sees the exercise. -->
+      <!-- The photo comes back here, so the student always sees the exercise. -->
       <img id="coach-photo" class="hidden" alt="Your homework picture">
       <div id="method-steps"></div>
       <div class="coach-actions">

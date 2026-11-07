@@ -42,7 +42,7 @@ var HINTS = [
   "Look at your class notes or textbook: is there a similar example you can compare with?"
 ];
 
-// NEW: after the 3 hints, the app suggests helpful ACTIONS instead.
+// After the 3 hints, the app suggests helpful ACTIONS instead.
 var HELPFUL_THINGS = [
   "Try an easier, similar exercise from your book. Solve it, then come back to this one.",
   "Ask a friend to explain HOW they would start, not the answer.",
@@ -55,10 +55,21 @@ var HELPFUL_THINGS = [
 // ---- 2. THE MEMORY ----
 var chosenSubject = null;
 var hintCount = 0;
+var cameraStream = null; // remembers if the camera is open
 
 // ---- 3. HELPERS ----
 function show(id) { document.getElementById(id).classList.remove("hidden"); }
 function hide(id) { document.getElementById(id).classList.add("hidden"); }
+
+// A polite program always stops the camera when it is not needed.
+function stopCamera() {
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(function (track) { track.stop(); });
+    cameraStream = null;
+  }
+  hide("camera-video");
+  hide("snap-btn");
+}
 
 // ---- 4. THE REACTIONS ----
 
@@ -71,19 +82,42 @@ document.querySelectorAll(".subject").forEach(function (button) {
   });
 });
 
-// NEW: when the student picks a picture, we read it and show it.
-// FileReader is a tool that reads a file from the phone/computer.
-document.getElementById("photo-input").addEventListener("change", function (event) {
-  var file = event.target.files[0];
-  if (!file) { return; }
-  var reader = new FileReader();
-  reader.onload = function () {
-    var photoData = reader.result;
-    document.getElementById("photo-preview").src = photoData;
-    document.getElementById("coach-photo").src = photoData;
-    show("photo-preview");
-  };
-  reader.readAsDataURL(file);
+// NEW: open the camera and show it LIVE in the <video>.
+// getUserMedia asks the user for permission, then gives a video stream.
+document.getElementById("open-camera-btn").addEventListener("click", function () {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+      .then(function (stream) {
+        cameraStream = stream;
+        var video = document.getElementById("camera-video");
+        video.srcObject = stream; // the video plays the camera stream
+        show("camera-video");
+        show("snap-btn");
+      })
+      .catch(function () {
+        alert("I could not open the camera here. You can still type your question!");
+      });
+  } else {
+    alert("This browser cannot use the camera. You can still type your question!");
+  }
+});
+
+// NEW: take the picture when the student presses "Snap!".
+// We draw the live image onto an invisible canvas (a drawing sheet),
+// then save it as a picture.
+document.getElementById("snap-btn").addEventListener("click", function () {
+  var video = document.getElementById("camera-video");
+  var drawingSheet = document.createElement("canvas");
+  drawingSheet.width = video.videoWidth;
+  drawingSheet.height = video.videoHeight;
+  drawingSheet.getContext("2d").drawImage(video, 0, 0);
+  var photoData = drawingSheet.toDataURL("image/jpeg", 0.8);
+
+  document.getElementById("photo-preview").src = photoData;
+  document.getElementById("coach-photo").src = photoData;
+  show("photo-preview");
+
+  stopCamera(); // clean up: we are done with the camera
 });
 
 // Start coaching:
@@ -116,10 +150,8 @@ document.getElementById("start-coach").addEventListener("click", function () {
 });
 
 // Hint button: 3 hints, then helpful things to do.
-// This is a CONDITION: the code chooses between two paths.
 document.getElementById("hint-btn").addEventListener("click", function () {
   if (hintCount < HINTS.length) {
-    // Path 1: we still have hints left.
     var hint = HINTS[hintCount];
     var box = document.getElementById("hint-box");
     box.innerHTML = "<strong>Hint " + (hintCount + 1) + " of 3:</strong> " + hint;
@@ -129,7 +161,6 @@ document.getElementById("hint-btn").addEventListener("click", function () {
       document.getElementById("hint-btn").innerHTML = "&#129514; More helpful things to do";
     }
   } else {
-    // Path 2: no more hints. Time for a new strategy!
     var helpfulBox = document.getElementById("helpful-box");
     var listHTML = "<strong>No more hints! Time to change strategy. Here is what great students do:</strong><ul>";
     HELPFUL_THINGS.forEach(function (thing) {
@@ -152,10 +183,10 @@ document.getElementById("done-btn").addEventListener("click", function () {
 
 // Restart:
 document.getElementById("restart-btn").addEventListener("click", function () {
+  stopCamera();
   hide("step-coach");
   show("step-subject");
   document.getElementById("question-box").value = "";
   hide("photo-preview");
   hide("coach-photo");
-  document.getElementById("photo-input").value = "";
 });
