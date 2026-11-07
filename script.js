@@ -59,6 +59,48 @@ var SUBJECTS = {
       "Read your sentence out loud: does it sound natural? Check gender and verb endings!"
     ]
   },
+  french: {
+    name: "French",
+    steps: [
+      { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
+      { title: "PLAN", text: "Which rule or example from your French notebook looks similar? Tell me which one you think applies." },
+      { title: "TRY", text: "Write your answer or first draft here, in French. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check articles, gender, verb endings and accents. Tell me what you corrected." }
+    ],
+    hints: [
+      "What kind of exercise is it? The instruction words tell you.",
+      "Look at your French notebook: find one example that looks similar.",
+      "Read your sentence out loud: does it sound natural? Check gender, verb endings and accents!"
+    ]
+  },
+  german: {
+    name: "German",
+    steps: [
+      { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
+      { title: "PLAN", text: "Which rule or example from your German notebook looks similar? Tell me which one you think applies." },
+      { title: "TRY", text: "Write your answer or first draft here, in German. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check articles (der, die, das), verb endings and spelling. Tell me what you corrected." }
+    ],
+    hints: [
+      "What kind of exercise is it? The instruction words tell you.",
+      "Look at your German notebook: find one example that looks similar.",
+      "Read your sentence out loud: does it sound natural? Check der, die, das and verb endings!"
+    ]
+  },
+  chinese: {
+    name: "Chinese",
+    steps: [
+      { title: "UNDERSTAND", text: "What kind of exercise is it: characters, reading, speaking, tones? Tell me the exact instruction." },
+      { title: "PLAN", text: "Which characters or words from your Chinese notebook do you already know that could help? Tell me which ones." },
+      { title: "TRY", text: "Write your answer or your sentence here. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "CHECK", text: "Look at each character carefully: right strokes, right tone? Read your sentence out loud slowly. Tell me what you checked." }
+    ],
+    hints: [
+      "What kind of exercise is it: characters, reading, speaking, tones? The instruction words tell you.",
+      "Look at your Chinese notebook: find a character or example that looks similar.",
+      "Read each character out loud with its tone. Slow is fast with Chinese!"
+    ]
+  },
   reading: {
     name: "Reading",
     steps: [
