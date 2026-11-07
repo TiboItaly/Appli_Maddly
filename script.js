@@ -95,6 +95,7 @@ var L10N = {
       teen: "We will work like a real study session: focused, efficient, no baby talk!"
     },
     encouragements: ["Great thinking!", "Interesting! I like the way you see it.", "Good job, keep going!", "Nice step forward! You are doing exactly what good students do."],
+    encouragementsAge: { young: ["Well done!", "Great idea!", "Keep going, you are doing great!", "One more little step!"], teen: ["Sharp thinking!", "Solid reasoning, keep it up!", "Excellent analysis, carry on!", "Rigorous approach, exactly the right method!"] },
     helpful: [
       "Try an easier, similar exercise from your book. Solve it, then come back to this one.",
       "Ask a friend to explain HOW they would start, not the answer.",
@@ -264,6 +265,7 @@ var L10N = {
       teen: "Nous travaillerons comme une vraie séance de travail : concentré(e), efficace, sans parler bébé !"
     },
     encouragements: ["Super réflexion !", "Intéressant ! J'aime ta façon de voir les choses.", "Bon travail, continue !", "Beau pas en avant ! Tu fais exactement comme les bons élèves."],
+    encouragementsAge: { young: ["Bravo, tu es fort !", "Super idée !", "Continue, tu y arrives !", "Encore un petit pas !"], teen: ["Belle analyse !", "Argument solide, continue sur cette voie !", "Raisonnement pertinent, poursuis !", "Démarche rigoureuse, c'est exactement la bonne méthode !"] },
     helpful: [
       "Essaie un exercice similaire plus facile de ton livre. Résous-le, puis reviens à celui-ci.",
       "Demande à un ami d'expliquer COMMENT il commencerait, pas la réponse.",
@@ -433,6 +435,7 @@ var L10N = {
       teen: "Lavoreremo come una vera sessione di studio: concentrati, efficienti, senza parlare come ai bambini!"
     },
     encouragements: ["Che bella riflessione!", "Interessante! Mi piace come la vedi.", "Bel lavoro, continua!", "Bel passo avanti! Fai esattamente come gli studenti bravi."],
+    encouragementsAge: { young: ["Bravissimo!", "Che bella idea!", "Continua, stai andando benissimo!", "Ancora un piccolo passo!"], teen: ["Ottima analisi!", "Ragionamento solido, continua così!", "Ottimo ragionamento, vai avanti!", "Approccio rigoroso, è esattamente il metodo giusto!"] },
     helpful: [
       "Prova un esercizio simile pi&ugrave; facile dal tuo libro. Risolvilo, poi torna a questo.",
       "Chiedi a un amico di spiegarti COME inizierebbe, non la risposta.",
@@ -602,6 +605,7 @@ var L10N = {
       teen: "Trabajaremos como una verdadera sesi&oacute;n de estudio: concentrados, eficientes, sin hablar como a bebés."
     },
     encouragements: ["¡Qué buena reflexi&oacute;n!", "¡Interesante! Me gusta c&oacute;mo lo ves.", "¡Buen trabajo, sigue así!", "¡Buen paso adelante! Haces exactamente lo que hacen los buenos estudiantes."],
+    encouragementsAge: { young: ["¡Muy bien!", "¡Qué buena idea!", "¡Sigue, lo estás haciendo genial!", "¡Un pasito más!"], teen: ["¡Buen análisis!", "¡Razonamiento sólido, sigue así!", "¡Excelente razonamiento, continúa!", "¡Enfoque riguroso, exactamente el método correcto!"] },
     helpful: [
       "Prueba un ejercicio similar más fácil de tu libro. Resuélvelo y vuelve a este.",
       "Pide a un amigo que te explique C&Oacute;MO empezaría, no la respuesta.",
@@ -771,6 +775,7 @@ var L10N = {
       teen: "Wir arbeiten wie eine echte Lernsession: konzentriert, effizient, ohne Babysprache!"
     },
     encouragements: ["Super gedacht!", "Interessant! Ich mag deine Sichtweise.", "Gute Arbeit, weiter so!", "Schöner Schritt nach vorn! Du machst genau das, was gute Schüler machen."],
+    encouragementsAge: { young: ["Gut gemacht!", "Tolle Idee!", "Weiter so, du bist super!", "Noch ein kleiner Schritt!"], teen: ["Scharf gedacht!", "Solide Argumentation, weiter so!", "Exzellente Analyse, mach weiter!", "Gründliches Vorgehen, genau die richtige Methode!"] },
     helpful: [
       "Probier eine ähnliche, leichtere Aufgabe aus deinem Buch. Löse sie und komm dann zu dieser zurück.",
       "Bitte einen Freund zu erklären, WIE er anfangen würde, nicht die Antwort.",
@@ -940,6 +945,7 @@ var L10N = {
       teen: "我们像一次真正的学习一样：专心、高效！"
     },
     encouragements: ["想得真好！", "有意思！我喜欢你的想法。", "做得好，继续！", "这一步很棒！你就是这样成为好学生的。"],
+    encouragementsAge: { young: ["做得好！", "好主意！", "继续加油，你很棒！", "再走一小步！"], teen: ["分析得好！", "推理扎实，继续！", "思路出色，加油！", "方法严谨，完全正确！"] },
     helpful: [
       "先做书上一道更容易的类似题，做出来再回来做这道。",
       "请朋友讲解他们会怎么开始，而不是要答案。",
@@ -1176,7 +1182,13 @@ function buildSystemPrompt() {
   var subjectName = dict().names[chosenSubject];
   var prompt =
     "You are Oreo, a warm, kind homework coach for a " + chosenAge + "-year-old student. " +
-    "Always reply in " + langNames[chosenLang] + " and adapt your vocabulary to the age. " +
+    "Always reply in " + langNames[chosenLang] + ". " +
+    "VOCABULARY BY AGE: " +
+    (chosenAge <= 7
+      ? "the student is " + chosenAge + " years old: use only very simple words a small child knows, very short sentences (under 10 words), name concrete everyday objects, ask exactly ONE tiny question at a time, be playful. "
+      : chosenAge <= 12
+      ? "the student is " + chosenAge + " years old: use simple everyday sentences; if you need a school word, explain it right away with a tiny example. "
+      : "the student is a teenager: use precise vocabulary and correct school terminology for the subject, treat them like a serious student, never use baby talk. ") +
     "The school subject: " + subjectName + ". " +
     "The student's homework question or exercise: \"" + chosenQuestion + "\". " +
     "The student's confidence in this subject: " + confidence + ". " +
@@ -1426,7 +1438,8 @@ document.getElementById("send-btn").addEventListener("click", function () {
     } else if (text.length < 5) {
       oreoSay(t("tellMore"));
     } else {
-      oreoSay(ENC_EMOJI[stepIndex % ENC_EMOJI.length] + d.encouragements[stepIndex % d.encouragements.length]);
+      var encList = (d.encouragementsAge && ageBand() !== "mid" ? d.encouragementsAge[ageBand()] : d.encouragements);
+      oreoSay(ENC_EMOJI[stepIndex % ENC_EMOJI.length] + encList[stepIndex % encList.length]);
       stepIndex = stepIndex + 1;
       if (stepIndex < totalSteps) {
         oreoSay("<strong>" + t("stepLabel") + " " + (stepIndex + 1) + " - " + stepTitle(stepIndex) + ":</strong> " + data.steps[stepIndex]);
