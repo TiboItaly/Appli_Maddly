@@ -1,5 +1,5 @@
 // ===== script.js =====
-// The BRAIN of the app: Hedgy the homework coach.
+// The BRAIN of the app: Oreo the homework coach.
 
 // ---- 1. THE DATA ----
 var SUBJECTS = {
@@ -8,7 +8,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "Read the exercise twice. Then tell me: what exactly are you asked to find, and which numbers or facts do you have?" },
       { title: "PLAN", text: "Which operation could help: adding, subtracting, multiplying, dividing? Tell me which one you would pick and why." },
-      { title: "TRY", text: "Write your calculation here, step by step. You can also tap 'Show my work to Hedgy' and photograph your paper!" },
+      { title: "TRY", text: "Write your calculation here, step by step. You can also tap 'Show my work to Oreo' and photograph your paper!" },
       { title: "CHECK", text: "Look at your result: is it logical? (A dog cannot weigh 900 kg!) In maths, the best trick is the opposite operation: try it and tell me what you found." }
     ],
     hints: [
@@ -22,7 +22,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "What kind of task is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Find the key words. Is there a rule or example in your notebook that looks similar? Which one?" },
-      { title: "TRY", text: "Write your answer, or your first draft, right here. You can also photograph it with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Write your answer, or your first draft, right here. You can also photograph it with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Read your answer out loud slowly, then check spelling, capitals and punctuation. Tell me what you noticed." }
     ],
     hints: [
@@ -36,7 +36,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Which rule or example from your Italian notebook looks similar? Tell me which one you think applies." },
-      { title: "TRY", text: "Write your answer or first draft here, in Italian. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Write your answer or first draft here, in Italian. You can also photograph your paper with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check articles, gender, verb endings and spelling. Tell me what you corrected." }
     ],
     hints: [
@@ -50,7 +50,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Which rule or example from your Spanish notebook looks similar? Tell me which one you think applies." },
-      { title: "TRY", text: "Write your answer or first draft here, in Spanish. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Write your answer or first draft here, in Spanish. You can also photograph your paper with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check gender, articles, verb endings and spelling. Tell me what you corrected." }
     ],
     hints: [
@@ -64,7 +64,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Which rule or example from your French notebook looks similar? Tell me which one you think applies." },
-      { title: "TRY", text: "Write your answer or first draft here, in French. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Write your answer or first draft here, in French. You can also photograph your paper with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check articles, gender, verb endings and accents. Tell me what you corrected." }
     ],
     hints: [
@@ -78,7 +78,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction." },
       { title: "PLAN", text: "Which rule or example from your German notebook looks similar? Tell me which one you think applies." },
-      { title: "TRY", text: "Write your answer or first draft here, in German. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Write your answer or first draft here, in German. You can also photograph your paper with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Read your sentence out loud: does it sound natural? Check articles (der, die, das), verb endings and spelling. Tell me what you corrected." }
     ],
     hints: [
@@ -92,7 +92,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "What kind of exercise is it: characters, reading, speaking, tones? Tell me the exact instruction." },
       { title: "PLAN", text: "Which characters or words from your Chinese notebook do you already know that could help? Tell me which ones." },
-      { title: "TRY", text: "Write your answer or your sentence here. You can also photograph your paper with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Write your answer or your sentence here. You can also photograph your paper with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Look at each character carefully: right strokes, right tone? Read your sentence out loud slowly. Tell me what you checked." }
     ],
     hints: [
@@ -148,7 +148,7 @@ var SUBJECTS = {
     steps: [
       { title: "UNDERSTAND", text: "Read the instruction slowly. Tell me: what exactly must you do, and what must the final result look like?" },
       { title: "PLAN", text: "Cut the big task into small steps. What is the first small step you can do right now?" },
-      { title: "TRY", text: "Do that first step completely here. You can also photograph your work with 'Show my work to Hedgy'!" },
+      { title: "TRY", text: "Do that first step completely here. You can also photograph your work with 'Show my work to Oreo'!" },
       { title: "CHECK", text: "Look at your work with fresh eyes: did you follow all the instructions? Tell me what you would improve." }
     ],
     hints: [
@@ -175,8 +175,8 @@ var ENCOURAGEMENTS = [
   "Nice step forward! You are doing exactly what good students do."
 ];
 
-// Hedgy's little portrait, shown next to each of her messages.
-var HEDGY_AVATAR = '<svg class="hedgy-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">' +
+// Oreo's little portrait, shown next to each of her messages.
+var OREO_AVATAR = '<svg class="oreo-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">' +
   '<polygon points="10,62 22,54.5 15.4,42 29.5,41.5 30,27.4 42.5,34 50,22 57.5,34 70,27.4 70.5,41.5 84.6,42 78,54.5 90,62" fill="#8a5a2b"/>' +
   '<ellipse cx="50" cy="66" rx="26" ry="24" fill="#f5deb3"/>' +
   '<circle cx="32" cy="71" r="5" fill="#ffb3c6"/>' +
@@ -220,11 +220,11 @@ function stopWorkCamera() {
   hide("work-snap-btn");
 }
 
-function hedgySay(text) {
+function oreoSay(text) {
   var chat = document.getElementById("chat");
   var bubble = document.createElement("div");
-  bubble.className = "bubble hedgy";
-  bubble.innerHTML = HEDGY_AVATAR + '<div class="hedgy-text">' + text + '</div>';
+  bubble.className = "bubble oreo";
+  bubble.innerHTML = OREO_AVATAR + '<div class="oreo-text">' + text + '</div>';
   chat.appendChild(bubble);
   chat.scrollTop = chat.scrollHeight;
 }
@@ -252,12 +252,12 @@ function studentPhoto(photoData) {
 
 function greeting(level, subjectName) {
   if (level === "high") {
-    return "Hello! I am Hedgy, your coach. You feel strong in " + subjectName + ", so today I will help you be precise and check your work like a champion!";
+    return "Hello! I am Oreo, your coach. You feel strong in " + subjectName + ", so today I will help you be precise and check your work like a champion!";
   }
   if (level === "low") {
-    return "Hello! I am Hedgy, your coach. I know " + subjectName + " can feel hard sometimes. Good news: my method works even then, and I stay with you at every step. One small step at a time!";
+    return "Hello! I am Oreo, your coach. I know " + subjectName + " can feel hard sometimes. Good news: my method works even then, and I stay with you at every step. One small step at a time!";
   }
-  return "Hello! I am Hedgy, your coach. We will go step by step together, and you will see: it is easier than it looks!";
+  return "Hello! I am Oreo, your coach. We will go step by step together, and you will see: it is easier than it looks!";
 }
 
 // ---- 4. THE REACTIONS ----
@@ -336,7 +336,7 @@ document.getElementById("work-snap-btn").addEventListener("click", function () {
   var photoData = drawingSheet.toDataURL("image/jpeg", 0.8);
   studentPhoto(photoData);
   stopWorkCamera();
-  hedgySay("Thank you for showing me your work! I cannot read every detail of a picture yet, but I can see that you are writing it down step by step, and that is exactly the right method. Keep going!");
+  oreoSay("Thank you for showing me your work! I cannot read every detail of a picture yet, but I can see that you are writing it down step by step, and that is exactly the right method. Keep going!");
 });
 
 // Start coaching.
@@ -358,17 +358,17 @@ document.getElementById("start-coach").addEventListener("click", function () {
   hide("restart-btn");
   hide("judge-buttons");
   show("step-coach");
-  hedgySay(greeting(confidence, subject.name));
+  oreoSay(greeting(confidence, subject.name));
   var firstStep = subject.steps[0];
-  hedgySay("<strong>Step 1 - " + firstStep.title + ":</strong> " + firstStep.text);
+  oreoSay("<strong>Step 1 - " + firstStep.title + ":</strong> " + firstStep.text);
 });
 
-// Send a message to Hedgy.
+// Send a message to Oreo.
 document.getElementById("send-btn").addEventListener("click", function () {
   var input = document.getElementById("chat-input");
   var text = input.value.trim();
   if (text === "") {
-    hedgySay("Write something first! Even a few words count.");
+    oreoSay("Write something first! Even a few words count.");
     return;
   }
   studentSay(text);
@@ -379,36 +379,36 @@ document.getElementById("send-btn").addEventListener("click", function () {
   if (stepIndex >= 0 && stepIndex < subject.steps.length) {
     // We are walking through the method.
     if (lower.indexOf("don't know") !== -1 || lower.indexOf("dont know") !== -1 || lower.indexOf("no idea") !== -1) {
-      hedgySay("Not knowing is completely normal, it is the start of learning! Press the Hint button if you want a clue, or try answering with what you THINK it could be.");
+      oreoSay("Not knowing is completely normal, it is the start of learning! Press the Hint button if you want a clue, or try answering with what you THINK it could be.");
     } else if (text.length < 5) {
-      hedgySay("Tell me a bit more! Even two or three words more help me coach you better.");
+      oreoSay("Tell me a bit more! Even two or three words more help me coach you better.");
     } else {
-      hedgySay(ENCOURAGEMENTS[stepIndex % ENCOURAGEMENTS.length]);
+      oreoSay(ENCOURAGEMENTS[stepIndex % ENCOURAGEMENTS.length]);
       stepIndex = stepIndex + 1;
       if (stepIndex < subject.steps.length) {
         var step = subject.steps[stepIndex];
-        hedgySay("<strong>Step " + (stepIndex + 1) + " - " + step.title + ":</strong> " + step.text);
+        oreoSay("<strong>Step " + (stepIndex + 1) + " - " + step.title + ":</strong> " + step.text);
       } else {
-        hedgySay("You worked through my whole method, well done so far! Now write your FINAL answer here, and I will help you check it like a champion.");
+        oreoSay("You worked through my whole method, well done so far! Now write your FINAL answer here, and I will help you check it like a champion.");
       }
     }
   } else if (stepIndex === subject.steps.length) {
     // We received the final answer: teach the student to self-check.
-    hedgySay("Good! Now check it before we celebrate. Do this: 1) Read the question one more time. 2) Check your work line by line. 3) In maths, try the opposite operation; in languages, read it out loud. When you have checked, tap the button that matches what you found below.");
+    oreoSay("Good! Now check it before we celebrate. Do this: 1) Read the question one more time. 2) Check your work line by line. 3) In maths, try the opposite operation; in languages, read it out loud. When you have checked, tap the button that matches what you found below.");
     show("judge-buttons");
     stepIndex = stepIndex + 1;
   } else {
-    // Free conversation with Hedgy.
+    // Free conversation with Oreo.
     if (lower.indexOf("thank") !== -1) {
-      hedgySay("You are very welcome! Helping YOU find answers is my favorite job. &#129413;");
+      oreoSay("You are very welcome! Helping YOU find answers is my favorite job. &#129413;");
     } else if (lower.indexOf("hate") !== -1) {
-      hedgySay("It is okay to hate a subject sometimes, really. The good news: hating it does not stop you from being good at it, one small step at a time. Let's take the smallest step possible together!");
+      oreoSay("It is okay to hate a subject sometimes, really. The good news: hating it does not stop you from being good at it, one small step at a time. Let's take the smallest step possible together!");
     } else if (lower.indexOf("hard") !== -1 || lower.indexOf("difficult") !== -1 || lower.indexOf("stuck") !== -1) {
-      hedgySay("I hear you. Every student finds things hard sometimes, that is how brains grow! Try the Hint button, and after 3 hints I have a list of great strategies for you.");
+      oreoSay("I hear you. Every student finds things hard sometimes, that is how brains grow! Try the Hint button, and after 3 hints I have a list of great strategies for you.");
     } else if (lower.indexOf("found") !== -1 || lower.indexOf("solved") !== -1 || lower.indexOf("got it") !== -1) {
-      hedgySay("Fantastic! When you are sure, tap <strong>It's correct!</strong> so we can celebrate together!");
+      oreoSay("Fantastic! When you are sure, tap <strong>It's correct!</strong> so we can celebrate together!");
     } else {
-      hedgySay("I am listening! Remember: I never give answers, but I never let go of your hand either. Tell me which part you are working on right now.");
+      oreoSay("I am listening! Remember: I never give answers, but I never let go of your hand either. Tell me which part you are working on right now.");
     }
   }
 });
@@ -445,17 +445,17 @@ document.getElementById("judge-correct").addEventListener("click", function () {
   celebration.innerHTML = "&#127881; WELL DONE! You found the answer YOURSELF. &#127881;<br>That is called learning. See you at the next homework!";
   show("celebration");
   show("restart-btn");
-  hedgySay("Well done! You checked your answer like a champion, and you found it yourself. I am proud of you! You can keep talking to me below if you want.");
+  oreoSay("Well done! You checked your answer like a champion, and you found it yourself. I am proud of you! You can keep talking to me below if you want.");
 });
 
 // Not sure: teach how to check better, adapted to the subject.
 document.getElementById("judge-check").addEventListener("click", function () {
   if (chosenSubject === "maths") {
-    hedgySay("Let's use the OPPOSITE OPERATION trick! Adding and subtracting are opposites: if you think you added, subtract to check. Multiplying and dividing are opposites: if you think you multiplied, divide to check. Example: you found 7 &times; 8 = 56? Then check with 56 &divide; 8. If it gives 7, your answer is correct! Try it and tell me what you find.");
+    oreoSay("Let's use the OPPOSITE OPERATION trick! Adding and subtracting are opposites: if you think you added, subtract to check. Multiplying and dividing are opposites: if you think you multiplied, divide to check. Example: you found 7 &times; 8 = 56? Then check with 56 &divide; 8. If it gives 7, your answer is correct! Try it and tell me what you find.");
   } else if (chosenSubject === "reading") {
-    hedgySay("Let's check your reading! Retell the text piece by piece in your own words. If one piece is missing or fuzzy, read ONLY that piece again, out loud and slowly. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
+    oreoSay("Let's check your reading! Retell the text piece by piece in your own words. If one piece is missing or fuzzy, read ONLY that piece again, out loud and slowly. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
   } else {
-    hedgySay("Good instinct: checking is exactly what strong students do! Here is my checklist: 1) Read the question again and compare it word by word with your answer. 2) Redo the difficult line slowly. 3) Compare with a similar example in your notes. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
+    oreoSay("Good instinct: checking is exactly what strong students do! Here is my checklist: 1) Read the question again and compare it word by word with your answer. 2) Redo the difficult line slowly. 3) Compare with a similar example in your notes. Then tap <strong>It's correct!</strong> or <strong>I got it wrong</strong> below.");
   }
 });
 
@@ -463,9 +463,9 @@ document.getElementById("judge-check").addEventListener("click", function () {
 document.getElementById("judge-wrong").addEventListener("click", function () {
   hide("judge-buttons");
   var subject = SUBJECTS[chosenSubject];
-  hedgySay("That is completely fine: wrong answers are how brains grow stronger! The fact that you found it yourself is already excellent work. Let's try again together, from the TRY step.");
+  oreoSay("That is completely fine: wrong answers are how brains grow stronger! The fact that you found it yourself is already excellent work. Let's try again together, from the TRY step.");
   stepIndex = 2;
-  hedgySay("<strong>Step 3 - " + subject.steps[2].title + ":</strong> " + subject.steps[2].text);
+  oreoSay("<strong>Step 3 - " + subject.steps[2].title + ":</strong> " + subject.steps[2].text);
 });
 
 // Restart.

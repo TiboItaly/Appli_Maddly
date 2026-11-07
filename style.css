@@ -140,7 +140,7 @@ textarea {
   line-height: 1.45;
 }
 
-.bubble.hedgy {
+.bubble.oreo {
   background: #f6f0ff;
   border: 2px solid #7b2cbf;
   align-self: flex-start;
@@ -149,9 +149,9 @@ textarea {
   align-items: flex-start;
 }
 
-.hedgy-avatar { flex: 0 0 40px; width: 40px; height: 40px; }
+.oreo-avatar { flex: 0 0 40px; width: 40px; height: 40px; }
 
-.hedgy-text strong { color: #5a189a; }
+.oreo-text strong { color: #5a189a; }
 
 .bubble.student {
   background: #7b2cbf;
