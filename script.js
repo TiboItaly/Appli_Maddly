@@ -1,6 +1,14 @@
 // ===== script.js =====
 // The BRAIN of the app: Oreo the homework coach.
 // Now multilingual: Oreo speaks 6 languages and adapts to your age!
+// Now with an optional AI mode: with a Mistral API key, Oreo really
+// accompanies the student's thinking about THEIR question (never the answer).
+
+// ---- AI MODE (optional) ----
+// To activate: paste a key from https://console.mistral.ai between the quotes.
+// WITHOUT a key, the app works exactly as before (scripted coaching).
+var MISTRAL_API_KEY = "";
+var MISTRAL_MODEL = "mistral-small-latest";
 
 // ---- 0. THE LANGUAGES ----
 // Maddly's idea: before using the app, you choose your language and your age.
@@ -17,6 +25,9 @@ var L10N = {
       chooseAge: "2. How old are you?",
       start: "Start!",
       changeSetup: " Change language or age",
+      back: "🔙 Back",
+      yourQuestion: "Your question was: ",
+      aiMode: "✨ AI mode: Oreo really thinks about YOUR question",
       step1Title: "Step 1: What subject is your homework?",
       step2Title: "Step 2: Your question or exercise",
       step3Title: "Step 3: Coaching with Oreo",
@@ -183,6 +194,9 @@ var L10N = {
       chooseAge: "2. Quel &acirc;ge as-tu ?",
       start: "Commencer !",
       changeSetup: " Changer la langue ou l'&acirc;ge",
+      back: "🔙 Retour",
+      yourQuestion: "Ta question était : ",
+      aiMode: "✨ Mode IA : Oreo réfléchit vraiment à TA question",
       step1Title: "Étape 1 : Quel est le sujet de tes devoirs ?",
       step2Title: "Étape 2 : Ta question ou ton exercice",
       step3Title: "Étape 3 : Coaching avec Oreo",
@@ -349,6 +363,9 @@ var L10N = {
       chooseAge: "2. Quanti anni hai?",
       start: "Inizia!",
       changeSetup: " Cambia lingua o età",
+      back: "🔙 Indietro",
+      yourQuestion: "La tua domanda era: ",
+      aiMode: "✨ Modalità IA: Oreo pensa davvero alla TUA domanda",
       step1Title: "Passo 1: di che materia sono i tuoi compiti?",
       step2Title: "Passo 2: la tua domanda o il tuo esercizio",
       step3Title: "Passo 3: coaching con Oreo",
@@ -515,6 +532,9 @@ var L10N = {
       chooseAge: "2. ¿Cuántos años tienes?",
       start: "¡Empezar!",
       changeSetup: " Cambiar idioma o edad",
+      back: "🔙 Atrás",
+      yourQuestion: "Tu pregunta era: ",
+      aiMode: "✨ Modo IA: Oreo piensa de verdad en TU pregunta",
       step1Title: "Paso 1: ¿De qué materia son tus deberes?",
       step2Title: "Paso 2: Tu pregunta o tu ejercicio",
       step3Title: "Paso 3: Coaching con Oreo",
@@ -681,6 +701,9 @@ var L10N = {
       chooseAge: "2. Wie alt bist du?",
       start: "Los geht's!",
       changeSetup: " Sprache oder Alter ändern",
+      back: "🔙 Zurück",
+      yourQuestion: "Deine Frage war: ",
+      aiMode: "✨ KI-Modus: Oreo denkt wirklich über DEINE Frage nach",
       step1Title: "Schritt 1: In welchem Fach sind deine Hausaufgaben?",
       step2Title: "Schritt 2: Deine Frage oder deine Aufgabe",
       step3Title: "Schritt 3: Coaching mit Oreo",
@@ -847,6 +870,9 @@ var L10N = {
       chooseAge: "2. 你几岁了？",
       start: "开始！",
       changeSetup: " 换语言或年龄",
+      back: "🔙 返回",
+      yourQuestion: "你的问题是：",
+      aiMode: "✨ AI 模式：Oreo 真的在思考你的问题",
       step1Title: "第 1 步：你的作业是哪一科？",
       step2Title: "第 2 步：你的问题或练习",
       step3Title: "第 3 步：Oreo 来训练你",
@@ -1009,11 +1035,13 @@ var L10N = {
 var chosenLang = "en";
 var chosenAge = null;
 var chosenSubject = null;
+var chosenQuestion = "";
 var confidence = "okay";
 var hintCount = 0;
 var stepIndex = -1;
 var cameraStream = null;
 var workStream = null;
+var aiHistory = [];
 
 var SUBJECT_EMOJI = {
   maths: "", english: "", italian: "",
@@ -1025,6 +1053,11 @@ var LANGUAGE_SUBJECTS = ["english", "italian", "spanish", "french", "german", "c
 
 function t(key) { return L10N[chosenLang].ui[key]; }
 function dict() { return L10N[chosenLang]; }
+
+// Emojis for the four method steps and for encouragements.
+var STEP_EMOJI = ["🔍 ", "🗺️ ", "✏️ ", "✅ "];
+var ENC_EMOJI = ["💡 ", "🌟 ", "👏 ", "🚀 "];
+function stepTitle(i) { return STEP_EMOJI[i] + dict().stepTitles[i]; }
 
 // Get the steps and hints for a subject, in the chosen language.
 function subjectData(key) {
@@ -1132,6 +1165,67 @@ function applyLanguage() {
   });
 }
 
+// ---- 3b. AI MODE ----
+// With a Mistral API key, Oreo uses a real AI to think about the student's
+// question. The system prompt forbids giving the answer, so the student
+// always finds it alone. Without a key, everything stays scripted.
+function aiEnabled() { return MISTRAL_API_KEY.length > 5; }
+
+function buildSystemPrompt() {
+  var langNames = { en: "English", fr: "French", it: "Italian", es: "Spanish", de: "German", zh: "simplified Chinese" };
+  var subjectName = dict().names[chosenSubject];
+  var prompt =
+    "You are Oreo, a warm, kind homework coach for a " + chosenAge + "-year-old student. " +
+    "Always reply in " + langNames[chosenLang] + " and adapt your vocabulary to the age. " +
+    "The school subject: " + subjectName + ". " +
+    "The student's homework question or exercise: \"" + chosenQuestion + "\". " +
+    "The student's confidence in this subject: " + confidence + ". " +
+    "ABSOLUTE RULE: you NEVER give the final answer and never solve the exercise, not even partially, even if the student insists or is upset. The student must find it alone. " +
+    "Coach with the four-step method: UNDERSTAND, PLAN, TRY, CHECK. Ask short guiding questions, one small step at a time. " +
+    "Praise effort. If the student says the answer, help them CHECK it (opposite operation in maths, reading out loud in languages) instead of confirming it yourself. " +
+    "Keep every message under 80 words, warm and encouraging, use a few emojis.";
+  return prompt;
+}
+
+function aiCall() {
+  var sendBtn = document.getElementById("send-btn");
+  var input = document.getElementById("chat-input");
+  sendBtn.disabled = true;
+  input.placeholder = "💭";
+  var messages = [{ role: "system", content: buildSystemPrompt() }].concat(aiHistory.slice(-12));
+  fetch("https://api.mistral.ai/v1/chat/completions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + MISTRAL_API_KEY },
+    body: JSON.stringify({ model: MISTRAL_MODEL, messages: messages, temperature: 0.6, max_tokens: 350 })
+  })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      var reply = (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || "";
+      if (reply === "") { throw new Error("empty reply"); }
+      aiHistory.push({ role: "assistant", content: reply });
+      oreoSay(reply);
+      if (aiHistory.length >= 3) { show("judge-buttons"); }
+    })
+    .catch(function () {
+      // Network or key problem: Oreo falls back to her scripted coaching.
+      oreoSay(t("hardMsg"));
+    })
+    .then(function () {
+      sendBtn.disabled = false;
+      input.placeholder = t("chatPh");
+    });
+}
+
+function aiStart() {
+  aiHistory = [{ role: "user", content: "Hello Oreo! My question is written above. Please start coaching me." }];
+  aiCall();
+}
+
+function aiExchange(text) {
+  aiHistory.push({ role: "user", content: text });
+  aiCall();
+}
+
 // ---- 4. THE WELCOME SCREEN (language + age) ----
 document.querySelectorAll(".lang-btn").forEach(function (button) {
   button.addEventListener("click", function () {
@@ -1164,6 +1258,20 @@ document.getElementById("welcome-start").addEventListener("click", function () {
 document.getElementById("change-setup-btn").addEventListener("click", function () {
   hide("step-subject");
   show("step-welcome");
+});
+
+// ---- 4b. BACK BUTTONS (Maddly's dad's idea) ----
+document.getElementById("back-to-subjects-btn").addEventListener("click", function () {
+  stopCamera();
+  hide("step-question");
+  show("step-subject");
+});
+
+document.getElementById("back-to-question-btn").addEventListener("click", function () {
+  stopCamera();
+  stopWorkCamera();
+  hide("step-coach");
+  show("step-question");
 });
 
 // ---- 5. SUBJECT AND CONFIDENCE ----
@@ -1255,12 +1363,13 @@ function ageBand() {
 function greeting(level, subjectName) {
   var text = dict().greetings[level === "high" ? "high" : (level === "low" ? "low" : "mid")];
   text = text.replace("{subject}", subjectName);
-  return text + " " + dict().ageNotes[ageBand()];
+  return "🦔 " + text + " " + dict().ageNotes[ageBand()];
 }
 
 document.getElementById("start-coach").addEventListener("click", function () {
   var d = dict();
   var subjectName = d.names[chosenSubject];
+  chosenQuestion = document.getElementById("question-box").value.trim();
   document.getElementById("subject-reminder").textContent = t("coachMode").replace("{subject}", subjectName);
   if (document.getElementById("photo-preview").classList.contains("hidden") === false) {
     show("coach-photo");
@@ -1278,8 +1387,17 @@ document.getElementById("start-coach").addEventListener("click", function () {
   hide("judge-buttons");
   show("step-coach");
   oreoSay(greeting(confidence, subjectName));
+  // Oreo remembers the question typed in step 2 and repeats it in step 3.
+  if (chosenQuestion !== "") {
+    oreoSay("📝 <strong>" + t("yourQuestion") + "</strong>" + chosenQuestion);
+  }
+  if (aiEnabled()) {
+    oreoSay(t("aiMode"));
+    aiStart();
+    return;
+  }
   var data = subjectData(chosenSubject);
-  oreoSay("<strong>" + t("stepLabel") + " 1 - " + d.stepTitles[0] + ":</strong> " + data.steps[0]);
+  oreoSay("<strong>" + t("stepLabel") + " 1 - " + stepTitle(0) + ":</strong> " + data.steps[0]);
 });
 
 // ---- 8. THE CONVERSATION ----
@@ -1292,6 +1410,10 @@ document.getElementById("send-btn").addEventListener("click", function () {
   }
   studentSay(text);
   input.value = "";
+  if (aiEnabled()) {
+    aiExchange(text);
+    return;
+  }
   var lower = text.toLowerCase();
   var d = dict();
   var data = subjectData(chosenSubject);
@@ -1304,10 +1426,10 @@ document.getElementById("send-btn").addEventListener("click", function () {
     } else if (text.length < 5) {
       oreoSay(t("tellMore"));
     } else {
-      oreoSay(d.encouragements[stepIndex % d.encouragements.length]);
+      oreoSay(ENC_EMOJI[stepIndex % ENC_EMOJI.length] + d.encouragements[stepIndex % d.encouragements.length]);
       stepIndex = stepIndex + 1;
       if (stepIndex < totalSteps) {
-        oreoSay("<strong>" + t("stepLabel") + " " + (stepIndex + 1) + " - " + d.stepTitles[stepIndex] + ":</strong> " + data.steps[stepIndex]);
+        oreoSay("<strong>" + t("stepLabel") + " " + (stepIndex + 1) + " - " + stepTitle(stepIndex) + ":</strong> " + data.steps[stepIndex]);
       } else {
         oreoSay(t("finalAnswer"));
       }
@@ -1380,10 +1502,15 @@ document.getElementById("judge-check").addEventListener("click", function () {
 document.getElementById("judge-wrong").addEventListener("click", function () {
   hide("judge-buttons");
   var d = dict();
-  var data = subjectData(chosenSubject);
   oreoSay(t("wrongMsg"));
+  if (aiEnabled()) {
+    aiHistory.push({ role: "user", content: "I checked and my answer was wrong. Help me try again." });
+    aiCall();
+    return;
+  }
+  var data = subjectData(chosenSubject);
   stepIndex = 2;
-  oreoSay("<strong>" + t("stepLabel") + " 3 - " + d.stepTitles[2] + ":</strong> " + data.steps[2]);
+  oreoSay("<strong>" + t("stepLabel") + " 3 - " + stepTitle(2) + ":</strong> " + data.steps[2]);
 });
 
 // ---- 11. RESTART ----
