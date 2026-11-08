@@ -30,6 +30,7 @@ var L10N = {
       speakListening: "🔴 Oreo is listening... speak now!",
       speakNone: "😕 Your voice does not work on this device. Ask a grown-up to type for you!",
       speakHeard: "👂 I heard: ",
+      speakNothing: "🤔 I did not hear anything. Press the button and speak louder!",
       yourQuestion: "Your question was: ",
       aiMode: "✨ AI mode: Oreo really thinks about YOUR question",
       step1Title: "Step 1: What subject is your homework?",
@@ -231,6 +232,7 @@ var L10N = {
       speakListening: "🔴 Oreo t'écoute... parle maintenant !",
       speakNone: "😕 Ta voix ne marche pas sur cet appareil. Demande à un grand de taper pour toi !",
       speakHeard: "👂 J'ai entendu : ",
+      speakNothing: "🤔 Je n'ai rien entendu. Appuie sur le bouton et parle plus fort !",
       yourQuestion: "Ta question était : ",
       aiMode: "✨ Mode IA : Oreo réfléchit vraiment à TA question",
       step1Title: "Étape 1 : Quel est le sujet de tes devoirs ?",
@@ -432,6 +434,7 @@ var L10N = {
       speakListening: "🔴 Oreo ti ascolta... parla ora!",
       speakNone: "😕 La tua voce non funziona su questo apparecchio. Chiedi a un grande di scrivere per te!",
       speakHeard: "👂 Ho sentito: ",
+      speakNothing: "🤔 Non ho sentito niente. Premi il pulsante e parla più forte!",
       yourQuestion: "La tua domanda era: ",
       aiMode: "✨ Modalità IA: Oreo pensa davvero alla TUA domanda",
       step1Title: "Passo 1: di che materia sono i tuoi compiti?",
@@ -633,6 +636,7 @@ var L10N = {
       speakListening: "🔴 Oreo te escucha... habla ahora!",
       speakNone: "😕 Tu voz no funciona en este aparato. ¡Pide a un mayor que escriba por ti!",
       speakHeard: "👂 Escuché: ",
+      speakNothing: "🤔 No escuché nada. ¡Pulsa el botón y habla más fuerte!",
       yourQuestion: "Tu pregunta era: ",
       aiMode: "✨ Modo IA: Oreo piensa de verdad en TU pregunta",
       step1Title: "Paso 1: ¿De qué materia son tus deberes?",
@@ -834,6 +838,7 @@ var L10N = {
       speakListening: "🔴 Oreo hört zu... sprich jetzt!",
       speakNone: "😕 Deine Stimme geht auf diesem Gerät nicht. Bitte einen Erwachsenen, für dich zu tippen!",
       speakHeard: "👂 Ich habe gehört: ",
+      speakNothing: "🤔 Ich habe nichts gehört. Drück den Knopf und sprich lauter!",
       yourQuestion: "Deine Frage war: ",
       aiMode: "✨ KI-Modus: Oreo denkt wirklich über DEINE Frage nach",
       step1Title: "Schritt 1: In welchem Fach sind deine Hausaufgaben?",
@@ -1035,6 +1040,7 @@ var L10N = {
       speakListening: "🔴 Oreo 在听……现在说吧！",
       speakNone: "😕 这个设备不能用语音。请大人帮你打字！",
       speakHeard: "👂 我听到了：",
+      speakNothing: "🤔 我什么都没听到。按下按钮，大声一点说！",
       yourQuestion: "你的问题是：",
       aiMode: "✨ AI 模式：Oreo 真的在思考你的问题",
       step1Title: "第 1 步：你的作业是哪一科？",
@@ -1394,7 +1400,9 @@ function buildSystemPrompt() {
 function aiCall() {
   var sendBtn = document.getElementById("send-btn");
   var input = document.getElementById("chat-input");
+  var micBtn = document.getElementById("chat-mic-btn");
   sendBtn.disabled = true;
+  if (micBtn) { micBtn.disabled = true; }
   input.placeholder = "💭";
   var messages = [{ role: "system", content: buildSystemPrompt() }].concat(aiHistory.slice(-12));
   fetch("https://api.mistral.ai/v1/chat/completions", {
@@ -1416,6 +1424,7 @@ function aiCall() {
     })
     .then(function () {
       sendBtn.disabled = false;
+      if (micBtn) { micBtn.disabled = false; }
       input.placeholder = t("chatPh");
     });
 }
@@ -1620,8 +1629,57 @@ function startListening(inputEl, autoSend) {
   rec.interimResults = false;
   rec.maxAlternatives = 1;
   btn.disabled = true;
+  // While listening, the button becomes red with moving waves:
+  // the child can SEE that it is their turn to speak.
+  var label = btn.innerHTML;
+  btn.classList.add("listening");
+  btn.innerHTML = '<span class="mic-waves"><span></span><span></span><span></span><span></span><span></span></span>' + t("speakListening");
+  var bars = btn.querySelectorAll(".mic-waves span");
   oreoSay(t("speakListening"));
+  var resultArrived = false;
+  var errorSeen = false;
+
+  // Real microphone level: the waves move when the child actually speaks.
+  var audioCtx = null, analyser = null, micStream = null, rafId = null, t0 = Date.now();
+  var stopWaves = function () {
+    if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; }
+    if (micStream) { micStream.getTracks().forEach(function (tr) { tr.stop(); }); micStream = null; }
+    if (audioCtx) { try { audioCtx.close(); } catch (err) {} audioCtx = null; analyser = null; }
+  };
+  var base = [0.25, 0.55, 1, 0.55, 0.25];
+  var drawWaves = function () {
+    rafId = window.requestAnimationFrame(drawWaves);
+    var level = 0;
+    if (analyser) {
+      var buf = new Uint8Array(analyser.frequencyBinCount);
+      analyser.getByteTimeDomainData(buf);
+      var sum = 0;
+      for (var i = 0; i < buf.length; i++) { var v = (buf[i] - 128) / 128; sum += v * v; }
+      level = Math.min(1, Math.sqrt(sum / buf.length) * 4);
+    } else {
+      // No microphone level available: a gentle idle animation so it still moves.
+      level = 0.2 + 0.15 * Math.sin((Date.now() - t0) / 180);
+    }
+    for (var b = 0; b < bars.length; b++) {
+      bars[b].style.height = (6 + base[b] * level * 16) + "px";
+    }
+  };
+  var AC = window.AudioContext || window.webkitAudioContext;
+  if (AC && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(function (stream) {
+        micStream = stream;
+        audioCtx = new AC();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 512;
+        audioCtx.createMediaStreamSource(stream).connect(analyser);
+      })
+      .catch(function () { /* the waves will simply use the idle animation */ });
+  }
+  drawWaves();
+
   rec.onresult = function (event) {
+    resultArrived = true;
     var said = event.results[0][0].transcript;
     inputEl.value = (inputEl.value.trim() === "" ? "" : inputEl.value.trim() + " ") + said;
     oreoSay(t("speakHeard") + said);
@@ -1631,10 +1689,17 @@ function startListening(inputEl, autoSend) {
     }
   };
   rec.onerror = function () {
+    errorSeen = true;
     oreoSay(t("speakNone"));
   };
   rec.onend = function () {
+    stopWaves();
+    btn.classList.remove("listening");
+    btn.innerHTML = label;
     btn.disabled = false;
+    if (!resultArrived && !errorSeen) {
+      oreoSay(t("speakNothing"));
+    }
   };
   rec.start();
 }
