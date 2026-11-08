@@ -62,6 +62,11 @@ var L10N = {
       writeFirst: "Write something first! Even a few words count.",
       tellMore: "Tell me a bit more! Even two or three words more help me coach you better.",
       dontKnow: "Not knowing is completely normal, it is the start of learning! Here is a clue to help you, then try again with what you THINK it could be.",
+      opReveal: {
+        found: "🦔 I can tell you the operation, but the numbers stay YOUR job! Your question has the word '{word}' in it, and that usually means {op}. Now tell me: which numbers will you use?",
+        nothing: "🦔 I can tell you the operation, but the numbers stay YOUR job! I did not spot a clue word in your question yet. Look again: 'total' often means ADDING, 'left' SUBTRACTING, 'each' MULTIPLYING or DIVIDING. Which word do you see?",
+        add: "ADDING", sub: "SUBTRACTING", mul: "MULTIPLYING", div: "DIVIDING"
+      },
       finalAnswer: "You worked through my whole method, well done so far! Now write your FINAL answer here, and I will help you check it like a champion.",
       selfCheck: "Good! Now check it before we celebrate. Do this: 1) Read the question one more time. 2) Check your work line by line. 3) In maths, try the opposite operation; in languages, read it out loud. When you have checked, tap the button that matches what you found below.",
       thanksMsg: "You are very welcome! Helping YOU find answers is my favorite job. 礪",
@@ -83,6 +88,7 @@ var L10N = {
     },
     kw: {
       dontknow: ["don't know", "dont know", "no idea"],
+      tellme: ["can you tell me", "tell me", "which operation", "what operation", "what do i do", "how do i do it"],
       thanks: ["thank"],
       hate: ["hate"],
       hard: ["hard", "difficult", "stuck"],
@@ -264,6 +270,11 @@ var L10N = {
       writeFirst: "Écris quelque chose d'abord ! Même quelques mots, ça compte.",
       tellMore: "Dis-m'en un peu plus ! Deux ou trois mots de plus m'aident mieux à t'accompagner.",
       dontKnow: "Ne pas savoir, c'est complètement normal : c'est le début de l'apprentissage ! Voici un indice pour t'aider, puis réessaie avec ce que tu PENSES que ce pourrait être.",
+      opReveal: {
+        found: "🦔 Je peux te dire l'opération, mais les nombres restent TON travail ! Ta question contient le mot « {word} », et cela veut souvent dire {op}. Maintenant dis-moi : quels nombres vas-tu utiliser ?",
+        nothing: "🦔 Je peux te dire l'opération, mais les nombres restent TON travail ! Je n'ai pas encore repéré de mot indice dans ta question. Regarde encore : « total » veut souvent dire ADDITIONNER, « reste » SOUSTRAIRE, « chaque » MULTIPLIER ou DIVISER. Quel mot vois-tu ?",
+        add: "ADDITIONNER", sub: "SOUSTRAIRE", mul: "MULTIPLIER", div: "DIVISER"
+      },
       finalAnswer: "Tu as suivi toute ma méthode, bravo pour l'instant ! Maintenant écris ta réponse FINALE ici, et je t'aiderai à la vérifier comme un champion.",
       selfCheck: "Bien ! Maintenant vérifie avant de fêter. Fais ceci : 1) Relis la question une fois de plus. 2) Vérifie ton travail ligne par ligne. 3) En maths, essaie l'opération inverse ; en langues, lis à voix haute. Quand tu as vérifié, appuie sur le bouton qui correspond à ce que tu as trouvé.",
       thanksMsg: "Avec plaisir ! T'aider à trouver les réponses, c'est mon métier préféré. 礪",
@@ -285,6 +296,7 @@ var L10N = {
     },
     kw: {
       dontknow: ["sais pas", "je ne sais", "aucune idée", "aucune idee"],
+      tellme: ["peux-tu me dire", "peux tu me dire", "dis-moi", "dis moi", "quelle opération", "quelle operation", "comment je fais"],
       thanks: ["merci"],
       hate: ["déteste", "deteste", "hais"],
       hard: ["dur", "difficile", "bloqu"],
@@ -466,6 +478,11 @@ var L10N = {
       writeFirst: "Prima scrivi qualcosa! Anche poche parole contano.",
       tellMore: "Dimmi qualcosa in pi&ugrave;! Anche due o tre parole in pi&ugrave; mi aiutano ad aiutarti meglio.",
       dontKnow: "Non sapere è completamente normale: è l'inizio dell'apprendimento! Ecco un indizio per aiutarti, poi riprova con quello che PENSI possa essere.",
+      opReveal: {
+        found: "🦔 Posso dirti l'operazione, ma i numeri restano TUO lavoro! La tua domanda contiene la parola '{word}', e questo spesso significa {op}. Ora dimmi: quali numeri userai?",
+        nothing: "🦔 Posso dirti l'operazione, ma i numeri restano TUO lavoro! Non ho ancora trovato una parola indizio nella tua domanda. Guarda di nuovo: 'totale' spesso significa ADDIZIONARE, 'restano' SOTTRARRE, 'ogni' MOLTIPLICARE o DIVIDERE. Quale parola vedi?",
+        add: "ADDIZIONARE", sub: "SOTTRARRE", mul: "MOLTIPLICARE", div: "DIVIDERE"
+      },
       finalAnswer: "Hai seguito tutto il mio metodo, complimenti! Ora scrivi qui la tua risposta FINALE, e ti aiuter&ograve; a controllarla da campione.",
       selfCheck: "Bene! Ora controlla prima di festeggiare. Fai cos&igrave;: 1) Rileggi la domanda un'altra volta. 2) Controlla il tuo lavoro riga per riga. 3) In matematica prova l'operazione inversa; nelle lingue, leggi ad alta voce. Quando hai controllato, premi il pulsante che corrisponde a quello che hai trovato.",
       thanksMsg: "Prego! Aiutare TE a trovare le risposte è il mio lavoro preferito. 礪",
@@ -487,6 +504,7 @@ var L10N = {
     },
     kw: {
       dontknow: ["non so", "non lo so", "nessuna idea"],
+      tellme: ["puoi dirmi", "dimmi", "quale operazione", "come faccio"],
       thanks: ["grazie"],
       hate: ["odio", "detesto"],
       hard: ["diffic", "duro", "blocc"],
@@ -668,6 +686,11 @@ var L10N = {
       writeFirst: "¡Escribe algo primero! Incluso unas pocas palabras cuentan.",
       tellMore: "¡Cuéntame un poco más! Incluso dos o tres palabras más me ayudan a ayudarte mejor.",
       dontKnow: "No saber es completamente normal: ¡es el principio del aprendizaje! Aquí tienes una pista para ayudarte, luego inténtalo de nuevo con lo que PIENSAS que podría ser.",
+      opReveal: {
+        found: "🦔 Puedo decirte la operación, ¡pero los números son TU trabajo! Tu pregunta contiene la palabra '{word}', y eso suele significar {op}. Ahora dime: ¿qué números vas a usar?",
+        nothing: "🦔 Puedo decirte la operación, ¡pero los números son TU trabajo! Todavía no vi una palabra pista en tu pregunta. Mira otra vez: 'total' suele significar SUMAR, 'quedan' RESTAR, 'cada' MULTIPLICAR o DIVIDIR. ¿Qué palabra ves?",
+        add: "SUMAR", sub: "RESTAR", mul: "MULTIPLICAR", div: "DIVIDIR"
+      },
       finalAnswer: "Has seguido todo mi método, ¡bien hecho! Ahora escribe aquí tu respuesta FINAL, y te ayudaré a comprobarla como un campe&oacute;n.",
       selfCheck: "¡Bien! Ahora compruébalo antes de celebrar. Haz esto: 1) Lee la pregunta una vez más. 2) Comprueba tu trabajo línea por línea. 3) En matemáticas prueba la operaci&oacute;n inversa; en idiomas, léelo en voz alta. Cuando lo hayas comprobado, pulsa el bot&oacute;n que corresponda a lo que encontraste.",
       thanksMsg: "¡De nada! Ayudarte a TI a encontrar respuestas es mi trabajo favorito. 礪",
@@ -689,6 +712,7 @@ var L10N = {
     },
     kw: {
       dontknow: ["no sé", "no se", "ni idea"],
+      tellme: ["puedes decirme", "dime", "qué operación", "que operacion", "cómo hago", "como hago"],
       thanks: ["gracias"],
       hate: ["odio", "detesto"],
       hard: ["difícil", "dificil", "difíc", "bloquead", "costar", "cuesta"],
@@ -870,6 +894,11 @@ var L10N = {
       writeFirst: "Schreibe zuerst etwas! Auch ein paar Wörter zählen.",
       tellMore: "Erzähl mir etwas mehr! Auch zwei oder drei Wörter mehr helfen mir, dich besser zu unterstützen.",
       dontKnow: "Nicht wissen ist völlig normal, das ist der Anfang vom Lernen! Hier ist ein Hinweis, der dir hilft, versuch es dann wieder mit dem, von dem du GLAUBST, dass es stimmen könnte.",
+      opReveal: {
+        found: "🦔 Ich kann dir die Rechenaufgabe sagen, aber die Zahlen bleiben DEINE Aufgabe! In deiner Aufgabe steht das Wort '{word}', und das bedeutet meistens {op}. Jetzt sag mir: Welche Zahlen nimmst du?",
+        nothing: "🦔 Ich kann dir die Rechenart sagen, aber die Zahlen bleiben DEINE Aufgabe! Ich habe noch kein Hinweiswort in deiner Aufgabe gesehen. Schau noch einmal: 'insgesamt' heißt oft ADDIEREN, 'übrig' SUBTRAHIEREN, 'jede' MULTIPLIZIEREN oder DIVIDIEREN. Welches Wort siehst du?",
+        add: "ADDIEREN", sub: "SUBTRAHIEREN", mul: "MULTIPLIZIEREN", div: "DIVIDIEREN"
+      },
       finalAnswer: "Du hast meine ganze Methode durchgearbeitet, bisher gut gemacht! Schreibe jetzt deine FINALE Antwort hier, und ich helfe dir, sie wie ein Champion zu prüfen.",
       selfCheck: "Gut! Jetzt prüfe, bevor wir feiern. Mach das: 1) Lies die Frage noch einmal. 2) Prüfe deine Arbeit Zeile für Zeile. 3) In Mathe probiere die Umkehroperation; in Sprachen lies laut vor. Wenn du geprüft hast, drück den Knopf, der zu deinem Ergebnis passt.",
       thanksMsg: "Sehr gern! Dir zu helfen, Antworten zu finden, ist mein Lieblingsjob. 礪",
@@ -891,6 +920,7 @@ var L10N = {
     },
     kw: {
       dontknow: ["weiß nicht", "weiss nicht", "keine ahnung"],
+      tellme: ["kannst du mir sagen", "sag mir", "welche operation", "welche rechenaufgabe", "wie mache ich"],
       thanks: ["danke"],
       hate: ["hasse", "hasst"],
       hard: ["schwer", "schwierig", "stecke fest"],
@@ -1072,6 +1102,11 @@ var L10N = {
       writeFirst: "先写点东西吧！即使只有几个字也算数。",
       tellMore: "再告诉我一点吧！多两三个字就能让我更好地帮你。",
       dontKnow: "不知道完全正常，这是学习的开始！给你一条线索，然后用你的想法再试一次。",
+      opReveal: {
+        found: "🦔 我可以告诉你要用哪种运算，但数字要靠你自己找！你的题目里有「{word}」这个词，这通常表示{op}。现在告诉我：你会用哪几个数字？",
+        nothing: "🦔 我可以告诉你要用哪种运算，但数字要靠你自己找！我还没在你的题目里找到线索词。再看一遍：「一共」通常是加法，「还剩」是减法，「每」是乘法或除法，「平均」是除法。你看到哪个词？",
+        add: "加法", sub: "减法", mul: "乘法", div: "除法"
+      },
       finalAnswer: "你已经完成了我的整个方法，到现在为止很棒！现在在这里写下你的最终答案，我会帮你像冠军一样查验它。",
       selfCheck: "好！庆祝之前先查验。这样做：1) 再读一遍题目。2) 一行一行检查你的作业。3) 数学题试试逆运算，语言题就大声读出来。查完以后，按下面符合你结果的按钮。",
       thanksMsg: "不客气！帮你自己找到答案是我最喜欢的工作。礪",
@@ -1093,6 +1128,7 @@ var L10N = {
     },
     kw: {
       dontknow: ["不知道", "不会"],
+      tellme: ["你能告诉我", "告诉我", "什么运算", "怎么算"],
       thanks: ["谢谢"],
       hate: ["讨厌"],
       hard: ["难", "卡住了"],
@@ -1288,6 +1324,15 @@ function hit(lowerText, key) {
   });
 }
 
+// Oreo's special promise for maths PLAN: he may name the OPERATION (found by
+// clue words in the question), but NEVER the numbers, in any language.
+var OP_CLUES = [
+  { op: "add", words: ["total", "sum", "altogether", "in all", "plus", "add", "somme", "ensemble", "summe", "insgesamt", "somma", "in tutto", "totale", "suma", "en todo", "一共", "总共", "加"] },
+  { op: "sub", words: ["left", "remain", "fewer", "difference", "minus", "how many more", "reste", "de moins", "différence", "rimang", "avanza", "differenza", "queda", "quedan", "diferencia", "menos", "übrig", "differenz", "还剩", "剩下"] },
+  { op: "mul", words: ["each", "times", "multiply", "product", "chaque", "fois", "produit", "ogni", "volta", "prodotto", "cada", "veces", "producto", "jede", "mal", "produkt", "乘", "每"] },
+  { op: "div", words: ["share", "split", "divide", "equally", "shared", "partag", "équitablement", "divis", "condividi", "diviso", "entre", "igual", "teilen", "geteilt", "durch", "除", "平均"] }
+];
+
 // ---- 2. OREO'S PORTRAIT ----
 var OREO_AVATAR = '<svg class="oreo-avatar" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">' +
   '<polygon points="10,62 22,54.5 15.4,42 29.5,41.5 30,27.4 42.5,34 50,22 57.5,34 70,27.4 70.5,41.5 84.6,42 78,54.5 90,62" fill="#8a5a2b"/>' +
@@ -1375,7 +1420,7 @@ function buildSystemPrompt() {
     "The student's homework question or exercise: \"" + chosenQuestion + "\". " +
     "The student's confidence in this subject: " + confidence + ". " +
     "STAY ON TOPIC: this app is only for homework. If the student changes the subject (video games, TV, films, toys, going out), do not follow them: say kindly that you are here for homework and bring the conversation back to the exercise with a guiding question. NEVER suggest playing video games, watching films or anything else instead of doing homework; the only exception is a short 5-minute break if the student is tired, followed by returning to work. ABSOLUTE RULE: you NEVER give the final answer and never solve the exercise, not even partially, even if the student insists or is upset. The student must find it alone. " +
-    "Coach with the four-step method: UNDERSTAND, PLAN, TRY, CHECK. Ask short guiding questions, one small step at a time. If the student says they do not know (in any language), NEVER praise that with an encouragement: acknowledge kindly, then give a tiny first action, like a choice between two simple options or a mini-example with different numbers. " +
+    "Coach with the four-step method: UNDERSTAND, PLAN, TRY, CHECK. Ask short guiding questions, one small step at a time. If the student says they do not know (in any language), NEVER praise that with an encouragement: acknowledge kindly, then give a tiny first action, like a choice between two simple options or a mini-example with different numbers. In maths, if the student asks which operation to use, you may name the operation (adding, subtracting, multiplying, dividing) because of a clue word in the question, but NEVER say which numbers to use; finding the numbers stays the student's job. " +
     "Praise effort. If the student says the answer, help them CHECK it (opposite operation in maths, reading out loud in languages) instead of confirming it yourself. " +
     "Keep every message under 80 words, warm and encouraging, use a few emojis.";
   return prompt;
@@ -1584,7 +1629,30 @@ document.getElementById("send-btn").addEventListener("click", function () {
 
   if (stepIndex >= 0 && stepIndex < totalSteps) {
     // We are walking through the method.
-    if (hit(lower, "dontknow")) {
+    if (chosenSubject === "maths" && stepIndex === 1 && ageBand() !== "young" &&
+        (hit(lower, "tellme") || hit(lower, "dontknow") ||
+         lower.indexOf("operation") !== -1 || lower.indexOf("opération") !== -1 ||
+         lower.indexOf("operacion") !== -1 || lower.indexOf("operazione") !== -1 ||
+         lower.indexOf("rechenaufgabe") !== -1 || lower.indexOf("运算") !== -1)) {
+      // Oreo names the operation thanks to a clue word in the question,
+      // but the numbers stay the student's job.
+      var reveal = dict().ui.opReveal;
+      var q = (chosenQuestion || "").toLowerCase();
+      var best = null;
+      OP_CLUES.forEach(function (c) {
+        c.words.forEach(function (w) {
+          var pos = q.indexOf(w);
+          if (pos !== -1 && (best === null || pos < best.pos)) {
+            best = { op: c.op, word: w, pos: pos };
+          }
+        });
+      });
+      if (best) {
+        oreoSay(reveal.found.replace("{word}", best.word).replace("{op}", reveal[best.op]));
+      } else {
+        oreoSay(reveal.nothing);
+      }
+    } else if (hit(lower, "dontknow")) {
       oreoSay(t("dontKnow"));
       // Oreo does not just point at the Hint button: he gives the next clue himself.
       if (hintCount < data.hints.length) {
