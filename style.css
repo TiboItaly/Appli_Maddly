@@ -102,7 +102,7 @@ textarea {
   box-sizing: border-box;
 }
 
-#camera-video, #work-camera-video {
+#camera-video {
   display: block;
   width: 100%;
   max-height: 350px;
@@ -218,24 +218,4 @@ footer { text-align: center; color: #777; padding: 20px; }
   font-size: 0.95rem;
   cursor: pointer;
   text-decoration: underline;
-}
-
-/* Voice waves while Oreo listens: the child sees it is their turn to speak. */
-#question-mic-btn.listening, #chat-mic-btn.listening {
-  background: #d62828;
-}
-.mic-waves {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 22px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-.mic-waves span {
-  display: inline-block;
-  width: 4px;
-  height: 6px;
-  border-radius: 2px;
-  background: white;
 }

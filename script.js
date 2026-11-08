@@ -61,7 +61,7 @@ var L10N = {
       camNo: "This browser cannot use the camera. You can still type your question!",
       writeFirst: "Write something first! Even a few words count.",
       tellMore: "Tell me a bit more! Even two or three words more help me coach you better.",
-      dontKnow: "Not knowing is completely normal, it is the start of learning! Press the Hint button if you want a clue, or try answering with what you THINK it could be.",
+      dontKnow: "Not knowing is completely normal, it is the start of learning! Here is a clue to help you, then try again with what you THINK it could be.",
       finalAnswer: "You worked through my whole method, well done so far! Now write your FINAL answer here, and I will help you check it like a champion.",
       selfCheck: "Good! Now check it before we celebrate. Do this: 1) Read the question one more time. 2) Check your work line by line. 3) In maths, try the opposite operation; in languages, read it out loud. When you have checked, tap the button that matches what you found below.",
       thanksMsg: "You are very welcome! Helping YOU find answers is my favorite job. 礪",
@@ -141,7 +141,7 @@ var L10N = {
         steps: [
           "Read the exercise twice. Then tell me: what exactly are you asked to find, and which numbers or facts do you have?",
           "Which operation could help: adding, subtracting, multiplying, dividing? Tell me which one you would pick and why.",
-          "Write your calculation here, step by step. You can also tap 'Show my work to Oreo' and photograph your paper!",
+          "Write your calculation here, step by step.",
           "Look at your result: is it logical? (A dog cannot weigh 900 kg!) In maths, the best trick is the opposite operation: try it and tell me what you found."
         ],
         hints: [
@@ -167,7 +167,7 @@ var L10N = {
         steps: [
           "What is the question really asking? Tell me in your own words.",
           "What do you already know about this topic? You can also draw a little sketch on paper.",
-          "Explain your idea here in your own words, like you would to a friend. You can also photograph your sketch!",
+          "Explain your idea here in your own words, like you would to a friend.",
           "Find one detail in your book or notes that confirms your idea. Tell me if it confirms it or not."
         ],
         hints: [
@@ -180,7 +180,7 @@ var L10N = {
         steps: [
           "What is asked: a date, a reason, a person, a place? Tell me what the question wants from you.",
           "In what order did things happen? Build a mini timeline and tell me what comes first.",
-          "Write your answer in your own words, with an example or proof. You can also photograph your timeline!",
+          "Write your answer in your own words, with an example or proof.",
           "Did you use facts you learned, not just your opinion? Tell me your strongest fact."
         ],
         hints: [
@@ -193,7 +193,7 @@ var L10N = {
         steps: [
           "Read the instruction slowly. Tell me: what exactly must you do, and what must the final result look like?",
           "Cut the big task into small steps. What is the first small step you can do right now?",
-          "Do that first step completely here. You can also photograph your work with 'Show my work to Oreo'!",
+          "Do that first step completely here.",
           "Look at your work with fresh eyes: did you follow all the instructions? Tell me what you would improve."
         ],
         hints: [
@@ -207,7 +207,7 @@ var L10N = {
       steps: [
         "What kind of exercise is it: reading, writing, grammar, vocabulary? Tell me the exact instruction.",
         "Which rule or example from your {name} notebook looks similar? Tell me which one you think applies.",
-        "Write your answer or first draft here, in {name}. You can also photograph your paper with 'Show my work to Oreo'!",
+        "Write your answer or first draft here, in {name}.",
         "Read your sentence out loud: does it sound natural? Check spelling, verb endings and accents. Tell me what you corrected."
       ],
       hints: [
@@ -263,7 +263,7 @@ var L10N = {
       camNo: "Ce navigateur ne peut pas utiliser la caméra. Tu peux quand même écrire ta question !",
       writeFirst: "Écris quelque chose d'abord ! Même quelques mots, ça compte.",
       tellMore: "Dis-m'en un peu plus ! Deux ou trois mots de plus m'aident mieux à t'accompagner.",
-      dontKnow: "Ne pas savoir, c'est complètement normal : c'est le début de l'apprentissage ! Appuie sur le bouton Indice si tu veux un indice, ou essaie de répondre avec ce que tu PENSES que ce pourrait être.",
+      dontKnow: "Ne pas savoir, c'est complètement normal : c'est le début de l'apprentissage ! Voici un indice pour t'aider, puis réessaie avec ce que tu PENSES que ce pourrait être.",
       finalAnswer: "Tu as suivi toute ma méthode, bravo pour l'instant ! Maintenant écris ta réponse FINALE ici, et je t'aiderai à la vérifier comme un champion.",
       selfCheck: "Bien ! Maintenant vérifie avant de fêter. Fais ceci : 1) Relis la question une fois de plus. 2) Vérifie ton travail ligne par ligne. 3) En maths, essaie l'opération inverse ; en langues, lis à voix haute. Quand tu as vérifié, appuie sur le bouton qui correspond à ce que tu as trouvé.",
       thanksMsg: "Avec plaisir ! T'aider à trouver les réponses, c'est mon métier préféré. 礪",
@@ -343,7 +343,7 @@ var L10N = {
         steps: [
           "Lis l'exercice deux fois. Puis dis-moi : que doit-on trouver exactement, et quels nombres ou informations as-tu ?",
           "Quelle opération pourrait aider : additionner, soustraire, multiplier, diviser ? Dis-moi laquelle tu choisirais et pourquoi.",
-          "Écris ton calcul ici, étape par étape. Tu peux aussi appuyer sur 'Montrer mon travail à Oreo' et photographier ta feuille !",
+          "Écris ton calcul ici, étape par étape.",
           "Regarde ton résultat : est-il logique ? (Un chien ne peut pas peser 900 kg !) En maths, la meilleure astuce c'est l'opération inverse : essaie et dis-moi ce que tu as trouvé."
         ],
         hints: [
@@ -369,7 +369,7 @@ var L10N = {
         steps: [
           "Que demande vraiment la question ? Dis-le moi avec tes mots.",
           "Que sais-tu déjà sur ce sujet ? Tu peux aussi faire un petit dessin sur papier.",
-          "Explique ton idée ici avec tes mots, comme à un ami. Tu peux aussi photographier ton dessin !",
+          "Explique ton idée ici avec tes mots, comme à un ami.",
           "Trouve un détail dans ton livre ou tes notes qui confirme ton idée. Dis-moi s'il la confirme ou non."
         ],
         hints: [
@@ -382,7 +382,7 @@ var L10N = {
         steps: [
           "Que demande-t-on : une date, une raison, une personne, un lieu ? Dis-moi ce que la question attend de toi.",
           "Dans quel ordre les choses se sont-elles passées ? Construis une mini frise chronologique et dis-moi ce qui vient en premier.",
-          "Écris ta réponse avec tes mots, avec un exemple ou une preuve. Tu peux aussi photographier ta frise !",
+          "Écris ta réponse avec tes mots, avec un exemple ou une preuve.",
           "As-tu utilisé des faits appris, pas seulement ton avis ? Dis-moi ta preuve la plus forte."
         ],
         hints: [
@@ -395,7 +395,7 @@ var L10N = {
         steps: [
           "Lis la consigne lentement. Dis-moi : que dois-tu faire exactement, et à quoi doit ressembler le résultat final ?",
           "Découpe la grande t&acirc;che en petites étapes. Quelle est la première petite étape que tu peux faire maintenant ?",
-          "Fais complètement cette première étape ici. Tu peux aussi photographier ton travail avec 'Montrer mon travail à Oreo' !",
+          "Fais complètement cette première étape ici.",
           "Regarde ton travail avec des yeux neufs : as-tu suivi toutes les consignes ? Dis-moi ce que tu améliorerais."
         ],
         hints: [
@@ -409,7 +409,7 @@ var L10N = {
       steps: [
         "Quel genre d'exercice : lecture, écriture, grammaire, vocabulaire ? Dis-moi la consigne exacte.",
         "Quelle règle ou quel exemple de ton cahier de {name} ressemble à cet exercice ? Dis-moi lequel s'applique.",
-        "Écris ta réponse ou ton brouillon ici, en {name}. Tu peux aussi photographier ta feuille avec 'Montrer mon travail à Oreo' !",
+        "Écris ta réponse ou ton brouillon ici, en {name}.",
         "Lis ta phrase à voix haute : est-ce naturel ? Vérifie l'orthographe, les terminaisons et les accents. Dis-moi ce que tu as corrigé."
       ],
       hints: [
@@ -465,7 +465,7 @@ var L10N = {
       camNo: "Questo browser non pu&ograve; usare la fotocamera. Puoi comunque scrivere la tua domanda!",
       writeFirst: "Prima scrivi qualcosa! Anche poche parole contano.",
       tellMore: "Dimmi qualcosa in pi&ugrave;! Anche due o tre parole in pi&ugrave; mi aiutano ad aiutarti meglio.",
-      dontKnow: "Non sapere è completamente normale: è l'inizio dell'apprendimento! Premi il pulsante Indizio se vuoi un indizio, oppure prova a rispondere con quello che PENSI possa essere.",
+      dontKnow: "Non sapere è completamente normale: è l'inizio dell'apprendimento! Ecco un indizio per aiutarti, poi riprova con quello che PENSI possa essere.",
       finalAnswer: "Hai seguito tutto il mio metodo, complimenti! Ora scrivi qui la tua risposta FINALE, e ti aiuter&ograve; a controllarla da campione.",
       selfCheck: "Bene! Ora controlla prima di festeggiare. Fai cos&igrave;: 1) Rileggi la domanda un'altra volta. 2) Controlla il tuo lavoro riga per riga. 3) In matematica prova l'operazione inversa; nelle lingue, leggi ad alta voce. Quando hai controllato, premi il pulsante che corrisponde a quello che hai trovato.",
       thanksMsg: "Prego! Aiutare TE a trovare le risposte è il mio lavoro preferito. 礪",
@@ -545,7 +545,7 @@ var L10N = {
         steps: [
           "Leggi l'esercizio due volte. Poi dimmi: cosa devi trovare esattamente, e quali numeri o informazioni hai?",
           "Quale operazione pu&ograve; aiutare: addizionare, sottrarre, moltiplicare, dividere? Dimmi quale sceglieresti e perché.",
-          "Scrivi qui il tuo calcolo, passo per passo. Puoi anche premere 'Mostra il mio lavoro a Oreo' e fotografare il tuo foglio!",
+          "Scrivi qui il tuo calcolo, passo per passo.",
           "Guarda il risultato: è logico? (Un cane non pu&ograve; pesare 900 kg!) In matematica il trucco migliore è l'operazione inversa: prova e dimmi cosa hai trovato."
         ],
         hints: [
@@ -571,7 +571,7 @@ var L10N = {
         steps: [
           "Cosa chiede davvero la domanda? Dimmelo con le tue parole.",
           "Cosa sai già di questo argomento? Puoi anche fare un piccolo disegno su carta.",
-          "Spiega qui la tua idea con le tue parole, come faresti con un amico. Puoi anche fotografare il tuo disegno!",
+          "Spiega qui la tua idea con le tue parole, come faresti con un amico.",
           "Trova un dettaglio nel tuo libro o nei tuoi appunti che confermi la tua idea. Dimmi se la conferma o no."
         ],
         hints: [
@@ -584,7 +584,7 @@ var L10N = {
         steps: [
           "Cosa si chiede: una data, un motivo, una persona, un luogo? Dimmi cosa vuole la domanda da te.",
           "In che ordine sono successe le cose? Costruisci una mini linea del tempo e dimmi cosa viene per primo.",
-          "Scrivi la tua risposta con le tue parole, con un esempio o una prova. Puoi anche fotografare la tua linea del tempo!",
+          "Scrivi la tua risposta con le tue parole, con un esempio o una prova.",
           "Hai usato fatti che hai studiato, non solo la tua opinione? Dimmi la tua prova pi&ugrave; forte."
         ],
         hints: [
@@ -597,7 +597,7 @@ var L10N = {
         steps: [
           "Leggi la consegna lentamente. Dimmi: cosa devi fare esattamente, e come deve essere il risultato finale?",
           "Taglia il grande compito in piccoli passi. Qual è il primo piccolo passo che puoi fare adesso?",
-          "Fai qui quel primo passo completamente. Puoi anche fotografare il tuo lavoro con 'Mostra il mio lavoro a Oreo'!",
+          "Fai qui quel primo passo completamente.",
           "Guarda il tuo lavoro con occhi nuovi: hai seguito tutte le consegne? Dimmi cosa miglioreresti."
         ],
         hints: [
@@ -611,7 +611,7 @@ var L10N = {
       steps: [
         "Che tipo di esercizio: lettura, scrittura, grammatica, vocabolario? Dimmi la consegna esatta.",
         "Quale regola o esempio del tuo quaderno di {name} sembra simile? Dimmi quale pensi si applichi.",
-        "Scrivi qui la tua risposta o la tua brutta copia, in {name}. Puoi anche fotografare il tuo foglio con 'Mostra il mio lavoro a Oreo'!",
+        "Scrivi qui la tua risposta o la tua brutta copia, in {name}.",
         "Leggi la frase ad alta voce: suona naturale? Controlla ortografia, terminazioni verbali e accenti. Dimmi cosa hai corretto."
       ],
       hints: [
@@ -667,7 +667,7 @@ var L10N = {
       camNo: "Este navegador no puede usar la cámara. ¡Puedes escribir tu pregunta igualmente!",
       writeFirst: "¡Escribe algo primero! Incluso unas pocas palabras cuentan.",
       tellMore: "¡Cuéntame un poco más! Incluso dos o tres palabras más me ayudan a ayudarte mejor.",
-      dontKnow: "No saber es completamente normal: ¡es el principio del aprendizaje! Pulsa el bot&oacute;n Pista si quieres una pista, o intenta responder con lo que PIENSAS que podría ser.",
+      dontKnow: "No saber es completamente normal: ¡es el principio del aprendizaje! Aquí tienes una pista para ayudarte, luego inténtalo de nuevo con lo que PIENSAS que podría ser.",
       finalAnswer: "Has seguido todo mi método, ¡bien hecho! Ahora escribe aquí tu respuesta FINAL, y te ayudaré a comprobarla como un campe&oacute;n.",
       selfCheck: "¡Bien! Ahora compruébalo antes de celebrar. Haz esto: 1) Lee la pregunta una vez más. 2) Comprueba tu trabajo línea por línea. 3) En matemáticas prueba la operaci&oacute;n inversa; en idiomas, léelo en voz alta. Cuando lo hayas comprobado, pulsa el bot&oacute;n que corresponda a lo que encontraste.",
       thanksMsg: "¡De nada! Ayudarte a TI a encontrar respuestas es mi trabajo favorito. 礪",
@@ -747,7 +747,7 @@ var L10N = {
         steps: [
           "Lee el ejercicio dos veces. Luego dime: qué debes encontrar exactamente, y qué n&uacute;meros o datos tienes.",
           "¿Qué operaci&oacute;n podría ayudar: sumar, restar, multiplicar, dividir? Dime cuál elegirías y por qué.",
-          "Escribe aquí tu cálculo, paso a paso. También puedes pulsar 'Mostrar mi trabajo a Oreo' y fotografiar tu hoja.",
+          "Escribe aquí tu cálculo, paso a paso.",
           "Mira tu resultado: ¿es l&oacute;gico? (¡Un perro no puede pesar 900 kg!) En matemáticas, el mejor truco es la operaci&oacute;n inversa: pr&uacute;ebalo y dime qué encontraste."
         ],
         hints: [
@@ -773,7 +773,7 @@ var L10N = {
         steps: [
           "¿Qué pide realmente la pregunta? Dímelo con tus palabras.",
           "¿Qué sabes ya de este tema? También puedes hacer un pequeño dibujo en papel.",
-          "Explica aquí tu idea con tus palabras, como a un amigo. También puedes fotografiar tu dibujo.",
+          "Explica aquí tu idea con tus palabras, como a un amigo.",
           "Encuentra un detalle en tu libro o apuntes que confirme tu idea. Dime si la confirma o no."
         ],
         hints: [
@@ -786,7 +786,7 @@ var L10N = {
         steps: [
           "¿Qué se pide: una fecha, un motivo, una persona, un lugar? Dime qué espera la pregunta de ti.",
           "¿En qué orden ocurrieron las cosas? Construye una mini línea de tiempo y dime qué va primero.",
-          "Escribe tu respuesta con tus palabras, con un ejemplo o una prueba. También puedes fotografiar tu línea de tiempo.",
+          "Escribe tu respuesta con tus palabras, con un ejemplo o una prueba.",
           "¿Usaste datos que aprendiste, no solo tu opini&oacute;n? Dime tu prueba más fuerte."
         ],
         hints: [
@@ -799,7 +799,7 @@ var L10N = {
         steps: [
           "Lee la instrucci&oacute;n despacio. Dime: qué debes hacer exactamente, y c&oacute;mo debe ser el resultado final.",
           "Corta la gran tarea en pasos pequeños. ¿Cuál es el primer pasito que puedes hacer ahora?",
-          "Haz ese primer paso completamente aquí. También puedes fotografiar tu trabajo con 'Mostrar mi trabajo a Oreo'.",
+          "Haz ese primer paso completamente aquí.",
           "Mira tu trabajo con ojos nuevos: ¿seguiste todas las instrucciones? Dime qué mejorarías."
         ],
         hints: [
@@ -813,7 +813,7 @@ var L10N = {
       steps: [
         "¿Qué tipo de ejercicio es: lectura, escritura, gramática, vocabulario? Dime la instrucci&oacute;n exacta.",
         "¿Qué regla o ejemplo de tu cuaderno de {name} parece similar? Dime cuál crees que se aplica.",
-        "Escribe aquí tu respuesta o borrador, en {name}. También puedes fotografiar tu hoja con 'Mostrar mi trabajo a Oreo'.",
+        "Escribe aquí tu respuesta o borrador, en {name}.",
         "Lee tu frase en voz alta: ¿suena natural? Comprueba ortografía, terminaciones verbales y tildes. Dime qué corregiste."
       ],
       hints: [
@@ -869,7 +869,7 @@ var L10N = {
       camNo: "Dieser Browser kann die Kamera nicht benutzen. Du kannst deine Frage trotzdem eintippen!",
       writeFirst: "Schreibe zuerst etwas! Auch ein paar Wörter zählen.",
       tellMore: "Erzähl mir etwas mehr! Auch zwei oder drei Wörter mehr helfen mir, dich besser zu unterstützen.",
-      dontKnow: "Nicht wissen ist völlig normal, das ist der Anfang vom Lernen! Drück den Tipp-Knopf, wenn du einen Hinweis willst, oder versuche zu antworten mit dem, von dem du GLAUBST, dass es stimmen könnte.",
+      dontKnow: "Nicht wissen ist völlig normal, das ist der Anfang vom Lernen! Hier ist ein Hinweis, der dir hilft, versuch es dann wieder mit dem, von dem du GLAUBST, dass es stimmen könnte.",
       finalAnswer: "Du hast meine ganze Methode durchgearbeitet, bisher gut gemacht! Schreibe jetzt deine FINALE Antwort hier, und ich helfe dir, sie wie ein Champion zu prüfen.",
       selfCheck: "Gut! Jetzt prüfe, bevor wir feiern. Mach das: 1) Lies die Frage noch einmal. 2) Prüfe deine Arbeit Zeile für Zeile. 3) In Mathe probiere die Umkehroperation; in Sprachen lies laut vor. Wenn du geprüft hast, drück den Knopf, der zu deinem Ergebnis passt.",
       thanksMsg: "Sehr gern! Dir zu helfen, Antworten zu finden, ist mein Lieblingsjob. 礪",
@@ -949,7 +949,7 @@ var L10N = {
         steps: [
           "Lies die Aufgabe zweimal. Dann sag mir: Was genau sollst du herausfinden, und welche Zahlen oder Angaben hast du?",
           "Welche Rechenart könnte helfen: plus, minus, mal, geteilt? Sag mir, welche du wählen würdest und warum.",
-          "Schreib deine Rechnung hier auf, Schritt für Schritt. Du kannst auch auf 'Zeige Oreo meine Arbeit' tippen und dein Blatt fotografieren!",
+          "Schreib deine Rechnung hier auf, Schritt für Schritt.",
           "Schau auf dein Ergebnis: Ist es logisch? (Ein Hund kann nicht 900 kg wiegen!) In Mathe ist der beste Trick die Umkehroperation: Probier es und sag mir, was du gefunden hast."
         ],
         hints: [
@@ -975,7 +975,7 @@ var L10N = {
         steps: [
           "Was verlangt die Frage wirklich? Sag es mir mit deinen Worten.",
           "Was weißt du schon über dieses Thema? Du kannst auch eine kleine Skizze auf Papier machen.",
-          "Erkläre deine Idee hier mit deinen Worten, wie einem Freund. Du kannst auch deine Skizze fotografieren!",
+          "Erkläre deine Idee hier mit deinen Worten, wie einem Freund.",
           "Finde ein Detail in deinem Buch oder deinen Notizen, das deine Idee bestätigt. Sag mir, ob es sie bestätigt oder nicht."
         ],
         hints: [
@@ -988,7 +988,7 @@ var L10N = {
         steps: [
           "Was wird gefragt: ein Datum, ein Grund, eine Person, ein Ort? Sag mir, was die Frage von dir will.",
           "In welcher Reihenfolge passierte was? Baue eine Mini-Zeitachse und sag mir, was zuerst kommt.",
-          "Schreib deine Antwort mit deinen Worten, mit einem Beispiel oder Beweis. Du kannst auch deine Zeitachse fotografieren!",
+          "Schreib deine Antwort mit deinen Worten, mit einem Beispiel oder Beweis.",
           "Hast du Fakten benutzt, die du gelernt hast, nicht nur deine Meinung? Sag mir deinen stärksten Beweis."
         ],
         hints: [
@@ -1001,7 +1001,7 @@ var L10N = {
         steps: [
           "Lies die Anleitung langsam. Sag mir: Was genau musst du tun, und wie soll das Ergebnis aussehen?",
           "Zerschneide die große Aufgabe in kleine Schritte. Was ist der erste kleine Schritt, den du jetzt machen kannst?",
-          "Mach diesen ersten Schritt hier ganz fertig. Du kannst deine Arbeit auch mit 'Zeige Oreo meine Arbeit' fotografieren!",
+          "Mach diesen ersten Schritt hier ganz fertig.",
           "Schau mit frischen Augen auf deine Arbeit: Hast du alle Anweisungen befolgt? Sag mir, was du verbessern würdest."
         ],
         hints: [
@@ -1015,7 +1015,7 @@ var L10N = {
       steps: [
         "Welche Art Aufgabe ist es: Lesen, Schreiben, Grammatik, Wortschatz? Sag mir die genaue Anweisung.",
         "Welche Regel oder welches Beispiel aus deinem {name}-Heft ähnelt der Aufgabe? Sag mir, welche passt.",
-        "Schreib deine Antwort oder deinen Entwurf hier auf {name}. Du kannst dein Blatt auch mit 'Zeige Oreo meine Arbeit' fotografieren!",
+        "Schreib deine Antwort oder deinen Entwurf hier auf {name}.",
         "Lies deinen Satz laut vor: Klingt er natürlich? Prüfe Rechtschreibung, Verbendungen und Akzente. Sag mir, was du korrigiert hast."
       ],
       hints: [
@@ -1071,7 +1071,7 @@ var L10N = {
       camNo: "这个浏览器不能用照相机。依然可以打字写问题！",
       writeFirst: "先写点东西吧！即使只有几个字也算数。",
       tellMore: "再告诉我一点吧！多两三个字就能让我更好地帮你。",
-      dontKnow: "不知道完全正常，这是学习的开始！想要线索就按提示按钮，或者用你的想法试着回答。",
+      dontKnow: "不知道完全正常，这是学习的开始！给你一条线索，然后用你的想法再试一次。",
       finalAnswer: "你已经完成了我的整个方法，到现在为止很棒！现在在这里写下你的最终答案，我会帮你像冠军一样查验它。",
       selfCheck: "好！庆祝之前先查验。这样做：1) 再读一遍题目。2) 一行一行检查你的作业。3) 数学题试试逆运算，语言题就大声读出来。查完以后，按下面符合你结果的按钮。",
       thanksMsg: "不客气！帮你自己找到答案是我最喜欢的工作。礪",
@@ -1151,7 +1151,7 @@ var L10N = {
         steps: [
           "把题目读两遍。然后告诉我：到底要求什么，你手里有哪些数字和条件？",
           "用哪种运算有帮助：加、减、乘、除？告诉我你会选哪一个，为什么。",
-          "在这里一步一步地写出你的计算过程。也可以把作业展示给 Oreo！",
+          "在这里一步一步地写出你的计算过程。",
           "看看你的结果：合理吗？（小狗不可能重 900 公斤！）数学里最好的诀窍是逆运算：试一试，告诉我结果。"
         ],
         hints: [
@@ -1177,7 +1177,7 @@ var L10N = {
         steps: [
           "这个问题到底在问什么？用自己的话告诉我。",
           "关于这个主题你已经知道什么？也可以在纸上画个小图。",
-          "用自己的话像给朋友讲解一样，在这里解释你的想法。也可以拍下你的图！",
+          "用自己的话像给朋友讲解一样，在这里解释你的想法。",
           "在书或笔记里找一个能证实你想法的细节。告诉我它能不能证实。"
         ],
         hints: [
@@ -1190,7 +1190,7 @@ var L10N = {
         steps: [
           "问的是什么：日期、原因、人物还是地点？告诉我题目要求你什么。",
           "事情是按什么顺序发生的？做一个小时间线，告诉我最早发生的是什么。",
-          "用自己的话写下答案，带上例子或证据。也可以拍下你的时间线！",
+          "用自己的话写下答案，带上例子或证据。",
           "你用的是学到的事实，还是只是自己的看法？告诉我你最强的证据。"
         ],
         hints: [
@@ -1203,7 +1203,7 @@ var L10N = {
         steps: [
           "慢慢地读题目要求。告诉我：到底要做什么，最后的结果要像什么样子？",
           "把大任务分成小步骤。现在能做的第一小步是什么？",
-          "在这里完整地做完这一步。也可以把作业展示给 Oreo！",
+          "在这里完整地做完这一步。",
           "用新鲜的眼光看你的作业：要求都做到了吗？告诉我你会改进哪里。"
         ],
         hints: [
@@ -1217,7 +1217,7 @@ var L10N = {
       steps: [
         "这是什么类型的练习：阅读、写作、语法还是词汇？告诉我完整的要求。",
         "你的{name}笔记本里有什么规则或例子和这题像？你觉得哪一个用得上？",
-        "用{name}在这里写出你的答案或草稿。也可以把作业展示给 Oreo！",
+        "用{name}在这里写出你的答案或草稿。",
         "大声读出你的句子：听起来自然吗？检查错字、动词结尾和重音符号。告诉我你改了什么。"
       ],
       hints: [
@@ -1238,7 +1238,6 @@ var confidence = "okay";
 var hintCount = 0;
 var stepIndex = -1;
 var cameraStream = null;
-var workStream = null;
 var aiHistory = [];
 
 var SUBJECT_EMOJI = {
@@ -1279,8 +1278,14 @@ function subjectData(key) {
 }
 
 function hit(lowerText, key) {
-  var words = dict().kw[key];
-  return words.some(function (w) { return lowerText.indexOf(w) !== -1; });
+  // Voice and autocorrect often insert a curly apostrophe: normalize it.
+  var norm = lowerText.replace(/\u2019/g, "'").replace(/\u02BC/g, "'");
+  // A child may type "I dont know" even with another interface language,
+  // so Oreo understands the keywords of ALL six languages.
+  return Object.keys(L10N).some(function (lang) {
+    var words = L10N[lang].kw[key];
+    return words.some(function (w) { return norm.indexOf(w) !== -1; });
+  });
 }
 
 // ---- 2. OREO'S PORTRAIT ----
@@ -1311,15 +1316,6 @@ function stopCamera() {
   hide("snap-btn");
 }
 
-function stopWorkCamera() {
-  if (workStream) {
-    workStream.getTracks().forEach(function (track) { track.stop(); });
-    workStream = null;
-  }
-  hide("work-camera-video");
-  hide("work-snap-btn");
-}
-
 function oreoSay(text) {
   var chat = document.getElementById("chat");
   var bubble = document.createElement("div");
@@ -1334,18 +1330,6 @@ function studentSay(text) {
   var bubble = document.createElement("div");
   bubble.className = "bubble student";
   bubble.textContent = text;
-  chat.appendChild(bubble);
-  chat.scrollTop = chat.scrollHeight;
-}
-
-function studentPhoto(photoData) {
-  var chat = document.getElementById("chat");
-  var bubble = document.createElement("div");
-  bubble.className = "bubble student";
-  var img = document.createElement("img");
-  img.src = photoData;
-  img.alt = t("photoAlt");
-  bubble.appendChild(img);
   chat.appendChild(bubble);
   chat.scrollTop = chat.scrollHeight;
 }
@@ -1391,7 +1375,7 @@ function buildSystemPrompt() {
     "The student's homework question or exercise: \"" + chosenQuestion + "\". " +
     "The student's confidence in this subject: " + confidence + ". " +
     "STAY ON TOPIC: this app is only for homework. If the student changes the subject (video games, TV, films, toys, going out), do not follow them: say kindly that you are here for homework and bring the conversation back to the exercise with a guiding question. NEVER suggest playing video games, watching films or anything else instead of doing homework; the only exception is a short 5-minute break if the student is tired, followed by returning to work. ABSOLUTE RULE: you NEVER give the final answer and never solve the exercise, not even partially, even if the student insists or is upset. The student must find it alone. " +
-    "Coach with the four-step method: UNDERSTAND, PLAN, TRY, CHECK. Ask short guiding questions, one small step at a time. " +
+    "Coach with the four-step method: UNDERSTAND, PLAN, TRY, CHECK. Ask short guiding questions, one small step at a time. If the student says they do not know (in any language), NEVER praise that with an encouragement: acknowledge kindly, then give a tiny first action, like a choice between two simple options or a mini-example with different numbers. " +
     "Praise effort. If the student says the answer, help them CHECK it (opposite operation in maths, reading out loud in languages) instead of confirming it yourself. " +
     "Keep every message under 80 words, warm and encouraging, use a few emojis.";
   return prompt;
@@ -1400,9 +1384,7 @@ function buildSystemPrompt() {
 function aiCall() {
   var sendBtn = document.getElementById("send-btn");
   var input = document.getElementById("chat-input");
-  var micBtn = document.getElementById("chat-mic-btn");
   sendBtn.disabled = true;
-  if (micBtn) { micBtn.disabled = true; }
   input.placeholder = "💭";
   var messages = [{ role: "system", content: buildSystemPrompt() }].concat(aiHistory.slice(-12));
   fetch("https://api.mistral.ai/v1/chat/completions", {
@@ -1424,7 +1406,6 @@ function aiCall() {
     })
     .then(function () {
       sendBtn.disabled = false;
-      if (micBtn) { micBtn.disabled = false; }
       input.placeholder = t("chatPh");
     });
 }
@@ -1482,7 +1463,6 @@ document.getElementById("back-to-subjects-btn").addEventListener("click", functi
 
 document.getElementById("back-to-question-btn").addEventListener("click", function () {
   stopCamera();
-  stopWorkCamera();
   hide("step-coach");
   show("step-question");
 });
@@ -1536,36 +1516,6 @@ document.getElementById("snap-btn").addEventListener("click", function () {
   stopCamera();
 });
 
-document.getElementById("work-camera-btn").addEventListener("click", function () {
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-      .then(function (stream) {
-        workStream = stream;
-        var video = document.getElementById("work-camera-video");
-        video.srcObject = stream;
-        show("work-camera-video");
-        show("work-snap-btn");
-      })
-      .catch(function () {
-        alert(t("camErr"));
-      });
-  } else {
-    alert(t("camNo"));
-  }
-});
-
-document.getElementById("work-snap-btn").addEventListener("click", function () {
-  var video = document.getElementById("work-camera-video");
-  var drawingSheet = document.createElement("canvas");
-  drawingSheet.width = video.videoWidth;
-  drawingSheet.height = video.videoHeight;
-  drawingSheet.getContext("2d").drawImage(video, 0, 0);
-  var photoData = drawingSheet.toDataURL("image/jpeg", 0.8);
-  studentPhoto(photoData);
-  stopWorkCamera();
-  oreoSay(t("photoThanks"));
-});
-
 // ---- 7. START COACHING ----
 function ageBand() {
   if (chosenAge <= 7) { return "young"; }
@@ -1613,104 +1563,6 @@ document.getElementById("start-coach").addEventListener("click", function () {
   oreoSay("<strong>" + t("stepLabel") + " 1 - " + stepTitle(0) + ":</strong> " + data.steps[0]);
 });
 
-// ---- 7b. SPEAK WITH YOUR VOICE ----
-// Little children who cannot type yet can simply talk to Oreo.
-var REC_LANGS = { en: "en-US", fr: "fr-FR", it: "it-IT", es: "es-ES", de: "de-DE", zh: "zh-CN" };
-
-function startListening(inputEl, autoSend) {
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) {
-    oreoSay(t("speakNone"));
-    return;
-  }
-  var btn = inputEl.id === "chat-input" ? document.getElementById("chat-mic-btn") : document.getElementById("question-mic-btn");
-  var rec = new SR();
-  rec.lang = REC_LANGS[chosenLang] || "en-US";
-  rec.interimResults = false;
-  rec.maxAlternatives = 1;
-  btn.disabled = true;
-  // While listening, the button becomes red with moving waves:
-  // the child can SEE that it is their turn to speak.
-  var label = btn.innerHTML;
-  btn.classList.add("listening");
-  btn.innerHTML = '<span class="mic-waves"><span></span><span></span><span></span><span></span><span></span></span>' + t("speakListening");
-  var bars = btn.querySelectorAll(".mic-waves span");
-  oreoSay(t("speakListening"));
-  var resultArrived = false;
-  var errorSeen = false;
-
-  // Real microphone level: the waves move when the child actually speaks.
-  var audioCtx = null, analyser = null, micStream = null, rafId = null, t0 = Date.now();
-  var stopWaves = function () {
-    if (rafId) { window.cancelAnimationFrame(rafId); rafId = null; }
-    if (micStream) { micStream.getTracks().forEach(function (tr) { tr.stop(); }); micStream = null; }
-    if (audioCtx) { try { audioCtx.close(); } catch (err) {} audioCtx = null; analyser = null; }
-  };
-  var base = [0.25, 0.55, 1, 0.55, 0.25];
-  var drawWaves = function () {
-    rafId = window.requestAnimationFrame(drawWaves);
-    var level = 0;
-    if (analyser) {
-      var buf = new Uint8Array(analyser.frequencyBinCount);
-      analyser.getByteTimeDomainData(buf);
-      var sum = 0;
-      for (var i = 0; i < buf.length; i++) { var v = (buf[i] - 128) / 128; sum += v * v; }
-      level = Math.min(1, Math.sqrt(sum / buf.length) * 4);
-    } else {
-      // No microphone level available: a gentle idle animation so it still moves.
-      level = 0.2 + 0.15 * Math.sin((Date.now() - t0) / 180);
-    }
-    for (var b = 0; b < bars.length; b++) {
-      bars[b].style.height = (6 + base[b] * level * 16) + "px";
-    }
-  };
-  var AC = window.AudioContext || window.webkitAudioContext;
-  if (AC && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(function (stream) {
-        micStream = stream;
-        audioCtx = new AC();
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 512;
-        audioCtx.createMediaStreamSource(stream).connect(analyser);
-      })
-      .catch(function () { /* the waves will simply use the idle animation */ });
-  }
-  drawWaves();
-
-  rec.onresult = function (event) {
-    resultArrived = true;
-    var said = event.results[0][0].transcript;
-    inputEl.value = (inputEl.value.trim() === "" ? "" : inputEl.value.trim() + " ") + said;
-    oreoSay(t("speakHeard") + said);
-    // The little ones cannot press Send either: Oreo sends for them.
-    if (autoSend && ageBand() === "young") {
-      document.getElementById("send-btn").click();
-    }
-  };
-  rec.onerror = function () {
-    errorSeen = true;
-    oreoSay(t("speakNone"));
-  };
-  rec.onend = function () {
-    stopWaves();
-    btn.classList.remove("listening");
-    btn.innerHTML = label;
-    btn.disabled = false;
-    if (!resultArrived && !errorSeen) {
-      oreoSay(t("speakNothing"));
-    }
-  };
-  rec.start();
-}
-
-document.getElementById("question-mic-btn").addEventListener("click", function () {
-  startListening(document.getElementById("question-box"), false);
-});
-document.getElementById("chat-mic-btn").addEventListener("click", function () {
-  startListening(document.getElementById("chat-input"), true);
-});
-
 // ---- 8. THE CONVERSATION ----
 document.getElementById("send-btn").addEventListener("click", function () {
   var input = document.getElementById("chat-input");
@@ -1734,6 +1586,14 @@ document.getElementById("send-btn").addEventListener("click", function () {
     // We are walking through the method.
     if (hit(lower, "dontknow")) {
       oreoSay(t("dontKnow"));
+      // Oreo does not just point at the Hint button: he gives the next clue himself.
+      if (hintCount < data.hints.length) {
+        oreoSay("💡 " + data.hints[hintCount]);
+        hintCount = hintCount + 1;
+        if (hintCount === data.hints.length) {
+          document.getElementById("hint-btn").innerHTML = t("moreBtn");
+        }
+      }
     } else if (text.length < 5 && chosenAge > 12) {
       // Little children often type a single word: that is fine, Oreo continues.
       // Only teenagers are gently asked for a fuller sentence.
@@ -1830,7 +1690,6 @@ document.getElementById("judge-wrong").addEventListener("click", function () {
 // ---- 11. RESTART ----
 document.getElementById("restart-btn").addEventListener("click", function () {
   stopCamera();
-  stopWorkCamera();
   stepIndex = -1;
   hide("step-coach");
   show("step-subject");
